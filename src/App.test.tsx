@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import App from "./App";
 
@@ -13,5 +13,19 @@ describe("App", () => {
         name: /security engineering, made operational/i,
       }),
     ).toBeInTheDocument();
+  });
+
+  it("provides a rendered target for every masthead anchor", () => {
+    const { container } = render(<App />);
+    const navigation = container.querySelector<HTMLElement>('nav[aria-label="Primary"]');
+
+    expect(navigation).not.toBeNull();
+
+    for (const link of within(navigation!).getAllByRole("link")) {
+      const target = link.getAttribute("href");
+
+      expect(target).toMatch(/^#/);
+      expect(container.querySelector(target!)).toBeInTheDocument();
+    }
   });
 });

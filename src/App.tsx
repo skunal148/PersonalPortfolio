@@ -1,6 +1,8 @@
 import { BlueprintHeader } from "./components/BlueprintHeader";
+import { CaseArchive } from "./components/CaseArchive";
 import { EvidenceDocketHero } from "./components/EvidenceDocketHero";
 import { EvidenceLedger } from "./components/EvidenceLedger";
+import { OperationalRegister } from "./components/OperationalRegister";
 import { portfolio } from "./data/portfolio";
 
 export default function App() {
@@ -54,7 +56,14 @@ export default function App() {
             </footer>
           </article>
         </section>
-        <section id="experience" className="future-anchor" aria-hidden="true" />
+        <CaseArchive cases={portfolio.caseStudies} />
+        <section
+          id="experience"
+          className="operational-evidence blueprint-texture"
+          aria-labelledby="operational-register-title"
+        >
+          <OperationalRegister groups={portfolio.capabilities} />
+        </section>
         <section id="services" className="future-anchor" aria-hidden="true" />
         <section id="contact" className="future-anchor" aria-hidden="true" />
       </main>
