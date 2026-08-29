@@ -1,8 +1,11 @@
 import { BlueprintHeader } from "./components/BlueprintHeader";
 import { CaseArchive } from "./components/CaseArchive";
+import { CareerTrace } from "./components/CareerTrace";
+import { ContactDocket } from "./components/ContactDocket";
 import { EvidenceDocketHero } from "./components/EvidenceDocketHero";
 import { EvidenceLedger } from "./components/EvidenceLedger";
 import { OperationalRegister } from "./components/OperationalRegister";
+import { ServicesDocket } from "./components/ServicesDocket";
 import { portfolio } from "./data/portfolio";
 
 export default function App() {
@@ -64,8 +67,12 @@ export default function App() {
         >
           <OperationalRegister groups={portfolio.capabilities} />
         </section>
-        <section id="services" className="future-anchor" aria-hidden="true" />
-        <section id="contact" className="future-anchor" aria-hidden="true" />
+        <CareerTrace stages={portfolio.careerTrace} />
+        <ServicesDocket services={portfolio.services} />
+        <ContactDocket
+          destinations={portfolio.destinations}
+          profileImage={portfolio.profileImage}
+        />
       </main>
     </>
   );
