@@ -29,6 +29,11 @@ test("640px composition uses full-width actions and simplified evidence routes",
   await page.setViewportSize({ width: 640, height: 900 });
   await page.goto("/");
 
+  const homeTarget = await page.locator(".blueprint-header__identity").boundingBox();
+  expect(homeTarget).not.toBeNull();
+  expect(homeTarget!.width).toBeGreaterThanOrEqual(44);
+  expect(homeTarget!.height).toBeGreaterThanOrEqual(44);
+
   const actionWidths = await page.locator(".docket-hero__actions").evaluate((actions) => {
     const parentWidth = actions.getBoundingClientRect().width;
     return {
@@ -73,7 +78,7 @@ test("mobile navigation is keyboard operable with accessible targets and clear a
 
   const targetSizes = await page
     .locator(
-      ".blueprint-header__toggle, .blueprint-header__navigation a, .docket-action, .section-index a",
+      ".blueprint-header__identity, .blueprint-header__toggle, .blueprint-header__navigation a, .docket-action, .section-index a",
     )
     .evaluateAll((elements) =>
       elements.map((element) => {
@@ -107,27 +112,44 @@ test("reduced motion exposes final stamp, workflow, and ledger states", async ({
   const page = await context.newPage();
   await page.goto("/");
 
-  await page.locator(".evidence-ledger").scrollIntoViewIfNeeded();
-
-  await expect(page.locator(".outcome-stamp")).toHaveAttribute("data-visible", "true");
-  await expect(page.locator(".workflow-diagram")).toHaveAttribute("data-visible", "true");
-  await expect(page.locator(".evidence-ledger")).toHaveAttribute("data-visible", "true");
-
   const finalState = await page.evaluate(() => {
+    for (const selector of [".outcome-stamp", ".workflow-diagram", ".evidence-ledger"]) {
+      document.querySelector(selector)?.setAttribute("data-visible", "false");
+    }
+
     const stamp = document.querySelector<HTMLElement>(".outcome-stamp__mark");
+    const carbon = document.querySelector<HTMLElement>(".outcome-stamp__before");
     const route = document.querySelector<SVGPathElement>(".workflow-diagram__route-to-ticket");
-    const row = document.querySelector<HTMLElement>(".evidence-ledger__row");
-    if (!stamp || !route || !row) throw new Error("Expected animated evidence elements");
+    const rows = document.querySelector<HTMLElement>(".evidence-ledger__rows");
+    if (!stamp || !carbon || !route || !rows) {
+      throw new Error("Expected animated evidence elements");
+    }
+
+    const carbonStyle = getComputedStyle(carbon);
+    const carbonMatrix = new DOMMatrix(carbonStyle.transform);
+
     return {
+      stampOpacity: getComputedStyle(stamp).opacity,
       stampTransform: getComputedStyle(stamp).transform,
+      carbonOpacity: carbonStyle.opacity,
+      carbonAngle: (Math.atan2(carbonMatrix.b, carbonMatrix.a) * 180) / Math.PI,
+      carbonXRegistration: carbonMatrix.e / carbon.offsetWidth,
+      carbonYRegistration: carbonMatrix.f / carbon.offsetHeight,
       routeDashOffset: getComputedStyle(route).strokeDashoffset,
-      rowTransform: getComputedStyle(row).transform,
+      rowsOpacity: getComputedStyle(rows).opacity,
+      rowsTransform: getComputedStyle(rows).transform,
     };
   });
 
+  expect(finalState.stampOpacity).toBe("1");
   expect(finalState.stampTransform).toBe("none");
+  expect(finalState.carbonOpacity).toBe("0.16");
+  expect(finalState.carbonAngle).toBeCloseTo(-7, 1);
+  expect(finalState.carbonXRegistration).toBeCloseTo(-0.54, 2);
+  expect(finalState.carbonYRegistration).toBeCloseTo(-0.54, 2);
   expect(Number.parseFloat(finalState.routeDashOffset || "0")).toBe(0);
-  expect(finalState.rowTransform).toBe("none");
+  expect(finalState.rowsOpacity).toBe("1");
+  expect(finalState.rowsTransform).toBe("none");
   await context.close();
 });
 

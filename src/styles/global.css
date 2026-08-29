@@ -2046,6 +2046,9 @@ svg {
   }
 
   .blueprint-header__identity {
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
     font-size: 2rem;
   }
 
@@ -2939,8 +2942,13 @@ svg {
 
   .outcome-stamp--active .outcome-stamp__mark,
   .evidence-ledger__rows {
-    opacity: 1;
+    opacity: 1 !important;
     transform: none !important;
+  }
+
+  .outcome-stamp--active[data-visible="false"] .outcome-stamp__before {
+    opacity: 0.16 !important;
+    transform: translate(-54%, -54%) rotate(-7deg) scaleX(1.04) !important;
   }
 
   .workflow-diagram__route-to-ticket,
