@@ -1,0 +1,92 @@
+{
+  "composition": "Evidence Docket",
+  "approvedComp": ".impeccable/mocks/comp-c-evidence-docket.webp",
+  "generatedWith": "built-in image generation; converted with cwebp -q 88",
+  "assets": [
+    {
+      "id": "paper-grain",
+      "ingredient": "Warm folded dossier field / archival paper grain",
+      "requiredMedium": "produced raster texture",
+      "outputPath": "src/assets/textures/paper-grain.webp",
+      "format": "WebP",
+      "dimensions": {
+        "width": 1024,
+        "height": 1024
+      },
+      "tileability": "Generated as a safely tileable, low-contrast edge-to-edge surface; use as a repeating decorative background only.",
+      "exactPrompt": "Use case: photorealistic-natural\\nAsset type: seamless website background texture for a cybersecurity Evidence Docket portfolio\\nPrimary request: Generate one square, low-contrast, safely tileable warm archival paper-grain texture at 1024 by 1024 pixels.\\nScene/backdrop: an evenly lit flat paper surface, no objects.\\nStyle/medium: matte scanned cotton-rag / fibrous dossier paper, subtle age, extremely restrained organic fibers and minute speckle.\\nComposition/framing: texture only, uniform edge-to-edge; all four boundaries must blend naturally when repeated as a CSS background tile.\\nLighting/mood: completely flat diffuse illumination, no directional lighting, no vignette, no cast shadows, no hotspot, no edge darkening.\\nColor palette: warm ivory and light cream, close to #F1EADB.\\nMaterials/textures: gentle archival paper fibers; very subtle fold-wear only as faint nondirectional irregularity, no strong crease line.\\nText (verbatim): none.\\nConstraints: no holes, no stamps, no writing, no numbers, no logos, no icons, no grid, no diagrams, no border, no watermark, no meaningful objects. Keep contrast low so it supports readable overlay text.\\nAvoid: parchment theatrics, coffee stains, torn edges, obvious paper folds, grunge, directional shadows, light bloom, gradients.",
+      "semanticBoundary": "Decorative only; no content, labels, controls, metrics, or contrast-dependent information may live in this image."
+    },
+    {
+      "id": "blueprint-grain",
+      "ingredient": "Blueprint paper grain / navy evidence-ledger substrate",
+      "requiredMedium": "produced raster texture",
+      "outputPath": "src/assets/textures/blueprint-grain.webp",
+      "format": "WebP",
+      "dimensions": {
+        "width": 1024,
+        "height": 1024
+      },
+      "tileability": "Generated as a safely tileable, low-contrast edge-to-edge surface; use as a repeating decorative background only.",
+      "exactPrompt": "Use case: photorealistic-natural\\nAsset type: seamless website background texture for a cybersecurity Evidence Docket portfolio\\nPrimary request: Generate one square, low-contrast, safely tileable deep-navy diazo-paper grain texture at 1024 by 1024 pixels.\\nScene/backdrop: an evenly lit flat technical-paper surface, no objects.\\nStyle/medium: matte scanned blueprint-stock / diazo paper with subtle fibers, faded print-stock irregularity, restrained age, dense navy substrate.\\nComposition/framing: texture only, uniform edge-to-edge; all four boundaries must blend naturally when repeated as a CSS background tile.\\nLighting/mood: completely flat diffuse illumination, no directional lighting, no vignette, no cast shadows, no hotspot, no glow, no bloom, no edge darkening.\\nColor palette: deep blueprint navy close to #0B1C2D with extremely quiet blue-black fiber variation.\\nMaterials/textures: very subtle paper fibers and printing-stock variation only.\\nText (verbatim): none.\\nConstraints: no grid, no writing, no diagrams, no routes, no numbers, no labels, no logos, no icons, no border, no watermark. Keep contrast low so white and cyan overlay text have full readability.\\nAvoid: cyan blue sky tones, star fields, noise/static, grunge, chalky marks, technical drawings, ruled paper, directional shadows, light bloom, gradients.",
+      "semanticBoundary": "Decorative only; no content, labels, controls, metrics, or contrast-dependent information may live in this image."
+    }
+  ],
+  "approvedCompIngredients": [
+    {
+      "ingredient": "<5 MIN inspection stamp",
+      "requiredMedium": "semantic text plus authored SVG/CSS",
+      "mustRemainSemanticCode": "The <5 MIN metric must be selectable/readable and the stamp group is animated as code, never rasterized."
+    },
+    {
+      "ingredient": "Ghosted 5 DAYS carbon impression",
+      "requiredMedium": "semantic text plus authored CSS/SVG texture mask",
+      "mustRemainSemanticCode": "Keep the decorative duplicate hidden from assistive technology; preserve the explanatory metric in semantic case-study text."
+    },
+    {
+      "ingredient": "Punched vertical case index",
+      "requiredMedium": "CSS/SVG geometry plus semantic anchors",
+      "mustRemainSemanticCode": "Holes, edge, numbering, labels, and responsive horizontal mobile re-composition remain authored and keyboard accessible."
+    },
+    {
+      "ingredient": "Drafted leader lines and conceptual workflow routes",
+      "requiredMedium": "authored SVG",
+      "mustRemainSemanticCode": "Scale paths responsively; keep labels in HTML or accessible SVG text and retain the conceptual-workflow qualifier."
+    },
+    {
+      "ingredient": "Evidence ledger",
+      "requiredMedium": "semantic HTML plus CSS",
+      "mustRemainSemanticCode": "Problem, Intervention, and Outcome are structured headings and prose, not flattened into an image."
+    },
+    {
+      "ingredient": "Project/system pictograms",
+      "requiredMedium": "small authored SVG set",
+      "mustRemainSemanticCode": "Use the comp's consistent drafting grammar; do not substitute generic icon tiles."
+    },
+    {
+      "ingredient": "Overlap, torn-paper edge, perforation, ruled ledger, and contact shadow",
+      "requiredMedium": "CSS and authored SVG geometry",
+      "mustRemainSemanticCode": "Maintain physical paper layering with minimal contact shadows; no image-based card UI."
+    },
+    {
+      "ingredient": "Display, body, and navigation typography",
+      "requiredMedium": "local web fonts plus semantic HTML",
+      "mustRemainSemanticCode": "Use Barlow Condensed for display marks and Atkinson Hyperlegible Next for readable body/control text with resilient fallbacks."
+    },
+    {
+      "ingredient": "Controls, navigation, case labels, paths, and evidence copy",
+      "requiredMedium": "semantic HTML/CSS",
+      "mustRemainSemanticCode": "All interactive actions, labels, and proof statements remain keyboard-accessible, selectable, and responsive."
+    },
+    {
+      "ingredient": "Social preview",
+      "requiredMedium": "later raster export",
+      "mustRemainSemanticCode": "Generate or export only after the finished visual world is implemented; it is not a substitute for page ingredients."
+    }
+  ],
+  "fidelityNotes": [
+    "The approved comp's technical grid, stamps, routes, text, holes, and ledger rules are intentionally absent from the generated texture assets and must be authored in code/SVG.",
+    "Textures are low-contrast decorative substrates. Required contrast, metrics, labels, and focus states must be verified against solid authored color layers rather than inferred from texture.",
+    "The generated texture edges were specified for safe tiling; confirm the selected CSS repeat scale in-browser because visual seams depend on background-size and compositing."
+  ]
+}

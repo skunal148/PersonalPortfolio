@@ -1,0 +1,16 @@
+:root {
+  --ink-blueprint: #0b1c2d;
+  --paper: #f1eadb;
+  --copper: #b66a3c;
+  --verified: #44c0c9;
+  --vermilion: #df4a39;
+  --ink: #152538;
+  --paper-muted: #d8cfbd;
+  --focus: #79e6eb;
+  --display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --body: "Atkinson Hyperlegible Next", "Segoe UI", sans-serif;
+  --page-gutter: clamp(1rem, 4vw, 4rem);
+  --section-space: clamp(5rem, 10vw, 9rem);
+  --rule: 1px;
+  --stamp-time: 380ms;
+}
