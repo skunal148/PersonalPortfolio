@@ -305,6 +305,7 @@ svg {
   min-height: 0;
   display: grid;
   grid-template-columns: minmax(0, 42fr) minmax(0, 58fr) clamp(5.4rem, 7vw, 7rem);
+  grid-template-rows: minmax(0, 1fr);
   isolation: isolate;
   overflow: clip;
 }
@@ -424,11 +425,13 @@ svg {
 .docket-action--primary {
   border-color: var(--vermilion);
   background: var(--vermilion);
-  color: var(--paper);
+  color: #07131f;
 }
 
 .docket-action--primary:hover {
-  background: #bd3023;
+  border-color: var(--ink-blueprint);
+  background: var(--ink-blueprint);
+  color: var(--paper);
 }
 
 .docket-action--secondary:hover {
@@ -623,6 +626,9 @@ svg {
 
 .section-index {
   z-index: 4;
+  align-self: stretch;
+  height: 100%;
+  max-height: 100%;
   min-height: 0;
   border-inline-start: 1px solid rgb(21 37 56 / 24%);
   box-shadow: -0.5rem 0 1rem rgb(21 37 56 / 10%);
@@ -635,7 +641,7 @@ svg {
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(3, minmax(0, 1fr));
   list-style: none;
 }
 
@@ -650,7 +656,7 @@ svg {
   position: absolute;
   z-index: 2;
   inset-block-start: 0.85rem;
-  inset-inline-start: -1.35rem;
+  inset-inline-start: 0.45rem;
   width: 0.7rem;
   height: 0.7rem;
   border: 1px solid rgb(21 37 56 / 55%);
@@ -820,6 +826,7 @@ svg {
     height: auto;
     min-height: auto;
     grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto;
   }
 
   .docket-hero__statement {
@@ -881,6 +888,8 @@ svg {
   }
 
   .section-index {
+    height: auto;
+    max-height: none;
     min-width: 0;
     border-inline-start: 0;
     border-block-start: 1px solid rgb(21 37 56 / 25%);
@@ -902,7 +911,7 @@ svg {
   }
 
   .section-index li::before {
-    inset-block-start: -0.4rem;
+    inset-block-start: 0.4rem;
     inset-inline-start: 1rem;
   }
 
