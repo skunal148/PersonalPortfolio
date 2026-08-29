@@ -1,4 +1,5 @@
 import { useId } from "react";
+import { useInView } from "../hooks/useInView";
 
 type WorkflowDiagramProps = {
   steps: readonly string[];
@@ -8,9 +9,15 @@ type WorkflowDiagramProps = {
 export function WorkflowDiagram({ steps, note }: WorkflowDiagramProps) {
   const titleId = `workflow-title-${useId().replace(/:/g, "")}`;
   const captionId = `workflow-caption-${useId().replace(/:/g, "")}`;
+  const { ref, inView } = useInView<HTMLElement>({ threshold: 0.18 });
 
   return (
-    <figure className="workflow-diagram" aria-labelledby={captionId}>
+    <figure
+      ref={ref}
+      className="workflow-diagram"
+      data-visible={inView}
+      aria-labelledby={captionId}
+    >
       <figcaption id={captionId} className="workflow-diagram__caption">
         <strong>Conceptual workflow</strong>
         <span>{note}</span>

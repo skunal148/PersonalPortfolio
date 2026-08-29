@@ -1,4 +1,5 @@
 import type { CaseStudy } from "../types/portfolio";
+import { useInView } from "../hooks/useInView";
 import { DraftedIcon, type DraftedIconName } from "./DraftedIcons";
 import { WorkflowDiagram } from "./WorkflowDiagram";
 
@@ -23,10 +24,13 @@ const evidenceIcons: Record<CaseStudy["evidence"][number]["label"], DraftedIconN
 export function EvidenceLedger({ caseStudy }: EvidenceLedgerProps) {
   const conceptualNote =
     caseStudy.conceptualNote ?? "Conceptual workflow · organizational details omitted";
+  const { ref, inView } = useInView<HTMLElement>({ threshold: 0.12 });
 
   return (
     <section
+      ref={ref}
       className="evidence-ledger"
+      data-visible={inView}
       aria-label={`${caseStudy.title} evidence`}
     >
       <div className="evidence-ledger__register" aria-hidden="true">

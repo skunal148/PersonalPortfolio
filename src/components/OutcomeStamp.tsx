@@ -1,4 +1,5 @@
 import { useId } from "react";
+import { useInView } from "../hooks/useInView";
 
 type OutcomeStampProps = {
   before: string;
@@ -9,9 +10,14 @@ type OutcomeStampProps = {
 
 export function OutcomeStamp({ before, after, scope, active = false }: OutcomeStampProps) {
   const wearMaskId = `stamp-wear-${useId().replace(/:/g, "")}`;
+  const { ref, inView } = useInView<HTMLElement>({ threshold: 0.2 });
 
   return (
-    <figure className={`outcome-stamp${active ? " outcome-stamp--active" : ""}`}>
+    <figure
+      ref={ref}
+      className={`outcome-stamp${active ? " outcome-stamp--active" : ""}`}
+      data-visible={inView}
+    >
       <span className="outcome-stamp__before" aria-hidden="true">
         {before}
       </span>

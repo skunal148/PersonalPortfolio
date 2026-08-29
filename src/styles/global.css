@@ -7,6 +7,7 @@
 html {
   color-scheme: light;
   font-family: var(--body);
+  scroll-padding-top: 5rem;
   scroll-behavior: smooth;
 }
 
@@ -145,6 +146,16 @@ svg {
   place-items: center;
   transform: rotate(-4deg);
   transform-origin: 52% 58%;
+}
+
+.outcome-stamp--active[data-visible="false"] .outcome-stamp__before {
+  opacity: 0.1;
+  transform: translate(-57%, -56%) rotate(-8deg) scaleX(1.04);
+}
+
+.outcome-stamp--active[data-visible="false"] .outcome-stamp__mark {
+  opacity: 0.72;
+  transform: translateY(-0.75rem) rotate(-6deg) scale(1.035);
 }
 
 .outcome-stamp__border {
@@ -830,6 +841,14 @@ svg {
   margin: 0;
   padding: 0;
   list-style: none;
+  transition:
+    opacity 320ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.evidence-ledger[data-visible="false"] .evidence-ledger__rows {
+  opacity: 0.9;
+  transform: translateY(0.65rem);
 }
 
 .evidence-ledger__row {
@@ -970,6 +989,21 @@ svg {
 
 .workflow-diagram__route-to-outcome {
   stroke: var(--vermilion);
+}
+
+.workflow-diagram[data-visible="false"] .workflow-diagram__route-to-ticket,
+.workflow-diagram[data-visible="false"] .workflow-diagram__route-to-outcome {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+.workflow-diagram[data-visible="true"] .workflow-diagram__route-to-ticket,
+.workflow-diagram[data-visible="true"] .workflow-diagram__route-to-outcome {
+  animation: workflow-route-draw 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.workflow-diagram[data-visible="true"] .workflow-diagram__route-to-outcome {
+  animation-delay: 90ms;
 }
 
 .workflow-diagram__nodes {
@@ -2001,7 +2035,7 @@ svg {
   }
 }
 
-@media (max-width: 55rem) {
+@media (max-width: 56.25rem) {
   .blueprint-header {
     min-height: 4.5rem;
     grid-template-columns: 1fr auto;
@@ -2404,7 +2438,7 @@ svg {
   }
 }
 
-@media (max-width: 55rem) {
+@media (max-width: 56.25rem) {
   .career-trace,
   .services-docket,
   .contact-docket {
@@ -2564,7 +2598,7 @@ svg {
   }
 }
 
-@media (max-width: 37rem) {
+@media (max-width: 40rem) {
   .blueprint-header {
     padding-inline: 1rem;
   }
@@ -2851,12 +2885,24 @@ svg {
   }
 }
 
-.outcome-stamp--active .outcome-stamp__before {
+.outcome-stamp--active[data-visible="true"] .outcome-stamp__before {
   animation: carbon-register var(--stamp-time) cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.outcome-stamp--active .outcome-stamp__mark {
+.outcome-stamp--active[data-visible="true"] .outcome-stamp__mark {
   animation: stamp-land var(--stamp-time) cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes workflow-route-draw {
+  from {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+  }
+
+  to {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 0;
+  }
 }
 
 @keyframes carbon-register {
@@ -2889,5 +2935,18 @@ svg {
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .outcome-stamp--active .outcome-stamp__mark,
+  .evidence-ledger__rows {
+    opacity: 1;
+    transform: none !important;
+  }
+
+  .workflow-diagram__route-to-ticket,
+  .workflow-diagram__route-to-outcome {
+    animation: none !important;
+    stroke-dasharray: none !important;
+    stroke-dashoffset: 0 !important;
   }
 }

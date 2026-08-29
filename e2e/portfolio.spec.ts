@@ -1,0 +1,141 @@
+import AxeBuilder from "@axe-core/playwright";
+import { expect, test } from "@playwright/test";
+
+test("desktop opening exposes proof and both actions", async ({ page }) => {
+  await page.setViewportSize({ width: 1536, height: 1024 });
+  await page.goto("/");
+
+  await expect(page.getByRole("heading", { level: 1 })).toContainText(
+    "Security engineering, made operational.",
+  );
+  await expect(page.getByText("<5 MIN", { exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Explore the evidence" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Start a conversation" })).toBeVisible();
+});
+
+test("mobile page has no horizontal document overflow", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+
+  const widths = await page.evaluate(() => ({
+    scroll: document.documentElement.scrollWidth,
+    client: document.documentElement.clientWidth,
+  }));
+
+  expect(widths.scroll).toBe(widths.client);
+});
+
+test("640px composition uses full-width actions and simplified evidence routes", async ({ page }) => {
+  await page.setViewportSize({ width: 640, height: 900 });
+  await page.goto("/");
+
+  const actionWidths = await page.locator(".docket-hero__actions").evaluate((actions) => {
+    const parentWidth = actions.getBoundingClientRect().width;
+    return {
+      parentWidth,
+      children: Array.from(actions.children, (child) => child.getBoundingClientRect().width),
+    };
+  });
+  expect(actionWidths.children.every((width) => Math.abs(width - actionWidths.parentWidth) < 1)).toBe(
+    true,
+  );
+
+  await page.locator(".evidence-ledger").scrollIntoViewIfNeeded();
+  await expect(page.locator(".workflow-diagram__route")).toBeHidden();
+  await expect(page.getByRole("list", { name: "Conceptual workflow steps" })).toBeVisible();
+
+  const firstRow = page.locator(".evidence-ledger__row").first();
+  const stacked = await firstRow.evaluate((row) => {
+    const label = row.querySelector<HTMLElement>(".evidence-ledger__label");
+    const copy = row.querySelector<HTMLElement>(":scope > p");
+    if (!label || !copy) throw new Error("Expected evidence label and copy");
+    return copy.getBoundingClientRect().top >= label.getBoundingClientRect().bottom - 1;
+  });
+  expect(stacked).toBe(true);
+});
+
+test("mobile navigation is keyboard operable with accessible targets and clear anchors", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+
+  const menu = page.getByRole("button", { name: "Open section index" });
+  await menu.focus();
+  await expect(menu).toBeFocused();
+  await expect(menu).toHaveCSS("outline-style", "solid");
+  await page.keyboard.press("Enter");
+
+  const workLink = page.getByRole("navigation", { name: "Primary" }).getByRole("link", {
+    name: "Work",
+  });
+  await expect(workLink).toBeVisible();
+
+  const targetSizes = await page
+    .locator(
+      ".blueprint-header__toggle, .blueprint-header__navigation a, .docket-action, .section-index a",
+    )
+    .evaluateAll((elements) =>
+      elements.map((element) => {
+        const { width, height } = element.getBoundingClientRect();
+        return { width, height };
+      }),
+    );
+  expect(targetSizes.every(({ width, height }) => width >= 44 && height >= 44)).toBe(true);
+
+  await workLink.focus();
+  await page.keyboard.press("Enter");
+  await expect(menu).toHaveAttribute("aria-expanded", "false");
+
+  const clearance = await page.evaluate(() => {
+    const header = document.querySelector<HTMLElement>(".blueprint-header");
+    const target = document.querySelector<HTMLElement>("#work");
+    if (!header || !target) throw new Error("Expected header and work anchor");
+    return {
+      headerBottom: header.getBoundingClientRect().bottom,
+      targetTop: target.getBoundingClientRect().top,
+    };
+  });
+  expect(clearance.targetTop).toBeGreaterThanOrEqual(clearance.headerBottom - 1);
+});
+
+test("reduced motion exposes final stamp, workflow, and ledger states", async ({ browser }) => {
+  const context = await browser.newContext({
+    reducedMotion: "reduce",
+    viewport: { width: 1280, height: 900 },
+  });
+  const page = await context.newPage();
+  await page.goto("/");
+
+  await page.locator(".evidence-ledger").scrollIntoViewIfNeeded();
+
+  await expect(page.locator(".outcome-stamp")).toHaveAttribute("data-visible", "true");
+  await expect(page.locator(".workflow-diagram")).toHaveAttribute("data-visible", "true");
+  await expect(page.locator(".evidence-ledger")).toHaveAttribute("data-visible", "true");
+
+  const finalState = await page.evaluate(() => {
+    const stamp = document.querySelector<HTMLElement>(".outcome-stamp__mark");
+    const route = document.querySelector<SVGPathElement>(".workflow-diagram__route-to-ticket");
+    const row = document.querySelector<HTMLElement>(".evidence-ledger__row");
+    if (!stamp || !route || !row) throw new Error("Expected animated evidence elements");
+    return {
+      stampTransform: getComputedStyle(stamp).transform,
+      routeDashOffset: getComputedStyle(route).strokeDashoffset,
+      rowTransform: getComputedStyle(row).transform,
+    };
+  });
+
+  expect(finalState.stampTransform).toBe("none");
+  expect(Number.parseFloat(finalState.routeDashOffset || "0")).toBe(0);
+  expect(finalState.rowTransform).toBe("none");
+  await context.close();
+});
+
+test("page has no serious or critical axe violations", async ({ page }) => {
+  await page.goto("/");
+  const results = await new AxeBuilder({ page }).analyze();
+
+  expect(
+    results.violations.filter(({ impact }) => impact === "serious" || impact === "critical"),
+  ).toEqual([]);
+});
