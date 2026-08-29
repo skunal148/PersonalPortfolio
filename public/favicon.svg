@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Kunal Shinde portfolio registration mark</title>
+  <rect width="64" height="64" fill="#0B1C2D"/>
+  <path d="M9 14h18M9 14v18M55 50H37M55 50V32" fill="none" stroke="#44C0C9" stroke-width="3"/>
+  <path d="M18 45 46 19M25 45h21V25" fill="none" stroke="#DF4A39" stroke-width="5" stroke-linecap="square"/>
+  <circle cx="18" cy="45" r="3" fill="#F1EADB"/>
+  <circle cx="46" cy="19" r="3" fill="#F1EADB"/>
+</svg>
