@@ -2,7 +2,51 @@ import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import App from "../App";
 import { portfolio } from "../data/portfolio";
+import "../styles/tokens.css";
+import "../styles/global.css";
 import { EvidenceLedger } from "./EvidenceLedger";
+
+function relativeLuminance([red, green, blue]: number[]) {
+  const [r, g, b] = [red, green, blue].map((channel) => {
+    const normalized = channel / 255;
+    return normalized <= 0.04045
+      ? normalized / 12.92
+      : ((normalized + 0.055) / 1.055) ** 2.4;
+  });
+
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+
+function parseRgb(color: string) {
+  if (/^#[\da-f]{6}$/i.test(color)) {
+    return [1, 3, 5].map((index) => Number.parseInt(color.slice(index, index + 2), 16));
+  }
+
+  const channels = color.match(/\d+(?:\.\d+)?/g)?.slice(0, 3).map(Number);
+
+  if (!channels || channels.length !== 3) {
+    throw new Error(`Expected a computed RGB color, received: ${color}`);
+  }
+
+  return channels;
+}
+
+function resolveCustomColor(color: string) {
+  const customProperty = color.match(/^var\((--[^)]+)\)$/)?.[1];
+
+  return customProperty
+    ? getComputedStyle(document.documentElement).getPropertyValue(customProperty).trim()
+    : color;
+}
+
+function contrastRatio(foreground: string, background: string) {
+  const foregroundLuminance = relativeLuminance(parseRgb(foreground));
+  const backgroundLuminance = relativeLuminance(parseRgb(background));
+  const lighter = Math.max(foregroundLuminance, backgroundLuminance);
+  const darker = Math.min(foregroundLuminance, backgroundLuminance);
+
+  return (lighter + 0.05) / (darker + 0.05);
+}
 
 describe("EvidenceLedger", () => {
   it("renders ordered problem, intervention, and outcome evidence", () => {
@@ -61,5 +105,21 @@ describe("EvidenceLedger", () => {
     );
     expect(within(separateProof).getByText("185+ vulnerability-remediation program")).toBeVisible();
     expect(separateProof).toHaveTextContent("Separate from the automation workflow");
+  });
+
+  it("keeps the small outcome step label readable against the blueprint field", () => {
+    const { container } = render(<App />);
+    const page = within(container);
+    const steps = page.getByRole("list", { name: /conceptual workflow steps/i });
+    const outcomeStep = within(steps).getAllByRole("listitem").at(-1)!;
+    const outcomeNumber = outcomeStep.querySelector("span")!;
+    const blueprint = outcomeStep.closest(".blueprint-texture")!;
+
+    expect(
+      contrastRatio(
+        resolveCustomColor(getComputedStyle(outcomeNumber).color),
+        resolveCustomColor(getComputedStyle(blueprint).backgroundColor),
+      ),
+    ).toBeGreaterThanOrEqual(4.5);
   });
 });

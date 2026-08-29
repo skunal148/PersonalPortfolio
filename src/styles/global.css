@@ -1013,7 +1013,11 @@ svg {
 }
 
 .workflow-diagram__steps li:last-child span {
-  color: var(--vermilion);
+  color: var(--paper);
+  text-decoration: underline;
+  text-decoration-color: var(--vermilion);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.28em;
 }
 
 .workflow-diagram__steps strong {
