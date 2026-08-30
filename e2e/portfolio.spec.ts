@@ -74,55 +74,36 @@ test("desktop opening exposes proof and both actions", async ({ page }) => {
   await expect(page.getByRole("link", { name: "Start a conversation" })).toBeVisible();
 });
 
-test("desktop career timeline is flat and stays clear of every stage label", async ({ page }) => {
+test("career progression is a line-free five-stage register", async ({ page }) => {
   await page.setViewportSize({ width: 1459, height: 900 });
   await page.goto("/");
   await page.locator(".career-trace").scrollIntoViewIfNeeded();
 
-  const timeline = await page.evaluate(() => {
-    const path = document.querySelector<SVGPathElement>(".career-trace__route-line");
-    const labels = Array.from(
-      document.querySelectorAll<HTMLElement>(".career-trace__stage strong"),
-    );
-    const nodes = Array.from(
-      document.querySelectorAll<SVGCircleElement>(".career-trace__route-nodes circle"),
-    );
-    const matrix = path?.getScreenCTM();
-    if (!path || !matrix) throw new Error("Expected the desktop career route");
-
-    const routePoints = Array.from({ length: Math.ceil(path.getTotalLength()) + 1 }, (_, distance) => {
-      const point = path.getPointAtLength(distance);
-      return new DOMPoint(point.x, point.y).matrixTransform(matrix);
+  const register = await page.evaluate(() => {
+    const stages = Array.from(document.querySelectorAll<HTMLElement>(".career-trace__stage"));
+    const titleTops = stages.map((stage) => {
+      const title = stage.querySelector<HTMLElement>("strong");
+      if (!title) throw new Error("Expected each career stage to have a title");
+      return title.getBoundingClientRect().top;
     });
-    const yPositions = routePoints.map(({ y }) => y);
-
-    const collisions = labels.flatMap((label, index) => {
-      const rect = label.getBoundingClientRect();
-
-      for (const screenPoint of routePoints) {
-        if (
-          screenPoint.x >= rect.left - 2 &&
-          screenPoint.x <= rect.right + 2 &&
-          screenPoint.y >= rect.top - 2 &&
-          screenPoint.y <= rect.bottom + 2
-        ) {
-          return [{ stage: index + 1, label: label.textContent?.trim() ?? "" }];
-        }
-      }
-
-      return [];
-    });
-
     return {
-      collisions,
-      nodeCount: nodes.length,
-      verticalSpread: Math.max(...yPositions) - Math.min(...yPositions),
+      hasRouteGraphic: Boolean(document.querySelector(".career-trace__route")),
+      stageCount: stages.length,
+      titleBaselineSpread: Math.max(...titleTops) - Math.min(...titleTops),
+      registrationWidths: stages.map((stage) =>
+        Number.parseFloat(getComputedStyle(stage, "::before").width),
+      ),
+      finalRegistrationColor: getComputedStyle(stages.at(-1)!, "::before").backgroundColor,
     };
   });
 
-  expect(timeline.collisions).toEqual([]);
-  expect(timeline.nodeCount).toBe(5);
-  expect(timeline.verticalSpread).toBeLessThan(1);
+  expect(register.hasRouteGraphic).toBe(false);
+  expect(register.stageCount).toBe(5);
+  expect(register.titleBaselineSpread).toBeLessThan(1);
+  expect(register.registrationWidths).toEqual(
+    [...register.registrationWidths].sort((left, right) => left - right),
+  );
+  expect(register.finalRegistrationColor).toBe("rgb(223, 74, 57)");
 });
 
 test("mobile page has no horizontal document overflow", async ({ page }) => {

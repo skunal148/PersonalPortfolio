@@ -1533,51 +1533,15 @@ svg {
 
 .career-trace__drawing {
   position: relative;
-  min-height: 24rem;
+  min-height: 20rem;
   margin-block-start: clamp(3rem, 6vw, 5.5rem);
   border-block: 1px solid rgb(21 37 56 / 30%);
-}
-
-.career-trace__route {
-  position: absolute;
-  inset: 3.5rem 2rem auto;
-  width: calc(100% - 4rem);
-  height: 11.5rem;
-  overflow: visible;
-}
-
-.career-trace__route-ghost,
-.career-trace__route-line {
-  fill: none;
-  vector-effect: non-scaling-stroke;
-}
-
-.career-trace__route-ghost {
-  stroke: rgb(21 37 56 / 12%);
-  stroke-width: 9;
-}
-
-.career-trace__route-line {
-  stroke: var(--copper);
-  stroke-width: 1.5;
-}
-
-.career-trace__route-nodes circle {
-  fill: var(--paper);
-  stroke: var(--copper);
-  stroke-width: 2;
-  vector-effect: non-scaling-stroke;
-}
-
-.career-trace__route-nodes .career-trace__route-node--growth {
-  stroke: var(--vermilion);
-  stroke-width: 3;
 }
 
 .career-trace__stages {
   position: relative;
   z-index: 1;
-  min-height: 24rem;
+  min-height: 20rem;
   margin: 0;
   padding: 0 1rem;
   display: grid;
@@ -1586,15 +1550,44 @@ svg {
 }
 
 .career-trace__stage {
+  --career-registration-width: 20%;
+  position: relative;
   min-width: 0;
-  padding: clamp(1.25rem, 2.5vw, 2.25rem) clamp(0.7rem, 1.8vw, 1.5rem);
+  padding: clamp(2.6rem, 4vw, 3.5rem) clamp(0.7rem, 1.8vw, 1.5rem);
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   border-inline-end: 1px solid rgb(21 37 56 / 18%);
 }
 
-.career-trace__stage:nth-child(even) {
-  justify-content: flex-end;
+.career-trace__stage::before {
+  content: "";
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  width: var(--career-registration-width);
+  height: 0.3rem;
+  background: var(--copper);
+}
+
+.career-trace__stage:nth-child(2) {
+  --career-registration-width: 40%;
+}
+
+.career-trace__stage:nth-child(3) {
+  --career-registration-width: 60%;
+}
+
+.career-trace__stage:nth-child(4) {
+  --career-registration-width: 80%;
+}
+
+.career-trace__stage:nth-child(5) {
+  --career-registration-width: 100%;
+}
+
+.career-trace__stage--growth::before {
+  background: var(--vermilion);
 }
 
 .career-trace__stage:last-child {
@@ -1604,7 +1597,7 @@ svg {
 .career-trace__index {
   color: #8f492f;
   font-family: var(--display);
-  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+  font-size: clamp(2.2rem, 3vw, 3.2rem);
   font-weight: 700;
   line-height: 1;
 }
@@ -1622,9 +1615,7 @@ svg {
 .career-trace__status {
   width: fit-content;
   margin-block-start: 0.85rem;
-  padding-block-start: 0.55rem;
-  border-block-start: 2px solid var(--vermilion);
-  color: #8f492f;
+  color: var(--vermilion);
   font-family: var(--display);
   font-size: 0.88rem;
   font-weight: 700;
@@ -2507,10 +2498,6 @@ svg {
     margin-block-start: 3rem;
   }
 
-  .career-trace__route {
-    display: none;
-  }
-
   .career-trace__stages {
     min-height: 0;
     padding: 0;
@@ -2530,42 +2517,12 @@ svg {
     border-block-end: 1px solid rgb(21 37 56 / 24%);
   }
 
-  .career-trace__stage::before {
-    content: "";
-    position: absolute;
-    inset-block: 0;
-    inset-inline-start: calc(var(--page-gutter) + 2.1rem);
-    width: 1px;
-    background: var(--copper);
-  }
-
-  .career-trace__stage {
-    position: relative;
-  }
-
-  .career-trace__stage::after {
-    content: "";
-    position: absolute;
-    inset-block-start: 50%;
-    inset-inline-start: calc(var(--page-gutter) + 1.75rem);
-    width: 0.75rem;
-    height: 0.75rem;
-    border: 2px solid var(--copper);
-    border-radius: 50%;
-    background: var(--paper);
-    transform: translateY(-50%);
-  }
-
-  .career-trace__stage--growth::after {
-    border-color: var(--vermilion);
-  }
-
   .career-trace__index {
     position: relative;
     z-index: 1;
     grid-row: 1 / span 2;
     align-self: center;
-    padding-inline-start: 2.9rem;
+    padding-inline-start: 0;
     font-size: 1.45rem;
   }
 
@@ -2848,16 +2805,8 @@ svg {
     grid-template-columns: 4.4rem minmax(0, 1fr);
   }
 
-  .career-trace__stage::before {
-    inset-inline-start: 2.85rem;
-  }
-
-  .career-trace__stage::after {
-    inset-inline-start: 2.5rem;
-  }
-
   .career-trace__index {
-    padding-inline-start: 2.25rem;
+    padding-inline-start: 0;
   }
 
   .services-docket__current li {
