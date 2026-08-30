@@ -77,4 +77,28 @@ describe("conversion sections", () => {
       "true",
     );
   });
+
+  it("renders a ready local profile image with useful intrinsic metadata", () => {
+    render(
+      <ContactDocket
+        destinations={portfolio.destinations}
+        profileImage={{
+          status: "ready",
+          src: "./assets/kunal-shinde.webp",
+          alt: "Kunal Shinde, security engineer",
+          width: 720,
+          height: 900,
+        }}
+      />,
+    );
+
+    expect(
+      screen.getByRole("img", { name: "Kunal Shinde, security engineer" }),
+    ).toHaveAttribute("src", "./assets/kunal-shinde.webp");
+    expect(screen.getByRole("img")).toHaveAttribute("width", "720");
+    expect(screen.getByRole("img")).toHaveAttribute("height", "900");
+    expect(screen.getByRole("img").closest(".contact-docket__portrait")).not.toHaveAttribute(
+      "aria-disabled",
+    );
+  });
 });

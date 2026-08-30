@@ -35,6 +35,16 @@ export type AssetPlaceholder = {
   replacement: string;
 };
 
+export type ProfileImage =
+  | AssetPlaceholder
+  | {
+      status: "ready";
+      src: `./${string}`;
+      alt: string;
+      width: number;
+      height: number;
+    };
+
 export type PortfolioContent = {
   identity: {
     name: string;
@@ -53,5 +63,5 @@ export type PortfolioContent = {
   careerTrace: string[];
   services: Service[];
   destinations: ExternalDestination[];
-  profileImage: AssetPlaceholder;
+  profileImage: ProfileImage;
 };

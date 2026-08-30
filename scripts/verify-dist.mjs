@@ -45,6 +45,31 @@ try {
     "Missing required document description.",
   );
   requireMatch(html, /4a2bc724/, "Direction seed 4a2bc724 did not survive the production build.");
+  requireMatch(
+    html,
+    /<body>\s*<!--[\s\S]*?4a2bc724[\s\S]*?-->\s*<div id="root">/,
+    "Direction comment must remain the first body child before the prerendered root.",
+  );
+  requireMatch(
+    html,
+    /<div id="root">[\s\S]*?<main id="main-content">/,
+    "Production HTML is missing prerendered main portfolio content.",
+  );
+  requireMatch(
+    html,
+    /Security engineering,[\s\S]*?made operational\./,
+    "Production HTML is missing the prerendered portfolio identity.",
+  );
+  requireMatch(
+    html,
+    /Vulnerability-remediation ticket-creation turnaround/,
+    "Production HTML is missing the scoped flagship metric.",
+  );
+  requireMatch(
+    html,
+    /href="#work">Explore the evidence<\/a>[\s\S]*?href="#contact">Start a conversation<\/a>/,
+    "Production HTML is missing usable primary anchor actions.",
+  );
 
   for (const forbiddenValue of [/href=(?:"#"|'#')/i, /example\.com/i, /(?:mailto:)?[\w.+-]+@[\w-]+\.[\w.-]+/i]) {
     if (forbiddenValue.test(html)) {

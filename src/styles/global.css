@@ -2004,6 +2004,23 @@ svg {
   background: var(--paper);
 }
 
+.contact-docket__portrait--ready {
+  padding: 0;
+  border-style: solid;
+}
+
+.contact-docket__portrait--ready::before {
+  content: none;
+}
+
+.contact-docket__portrait--ready > img {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  object-fit: cover;
+  background: transparent;
+}
+
 .contact-docket__footer {
   min-height: 5rem;
   display: flex;

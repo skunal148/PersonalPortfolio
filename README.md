@@ -30,7 +30,7 @@ Do not add that sitemap line until the hostname is confirmed.
 ## Replace before publishing
 
 - In `src/data/portfolio.ts`, replace all six `portfolio.destinations` placeholders: résumé PDF, email, LinkedIn, GitHub, Fiverr, and Upwork.
-- In `src/data/portfolio.ts`, replace `portfolio.profileImage` with the supplied professional headshot path and metadata.
+- Put the supplied headshot in `public/assets`, then replace `portfolio.profileImage` in `src/data/portfolio.ts` with `{ status: "ready", src: "./assets/kunal-shinde.webp", alt: "Useful description", width: 720, height: 900 }`, using the image's real intrinsic dimensions. No component change is needed.
 - Supply the résumé PDF at the path used by the replacement destination.
 - Confirm the final public hostname before adding the sitemap line in `public/robots.txt`.
 - Confirm OSCP status before mentioning it publicly; use only `planned` or `in progress` unless completion is explicitly confirmed.

@@ -1,8 +1,8 @@
-import type { AssetPlaceholder, ExternalDestination } from "../types/portfolio";
+import type { ExternalDestination, ProfileImage } from "../types/portfolio";
 
 type ContactDocketProps = {
   destinations: ExternalDestination[];
-  profileImage: AssetPlaceholder;
+  profileImage: ProfileImage;
 };
 
 export function ContactDocket({ destinations, profileImage }: ContactDocketProps) {
@@ -55,10 +55,21 @@ export function ContactDocket({ destinations, profileImage }: ContactDocketProps
             )}
           </div>
 
-          <span className="contact-docket__portrait" aria-disabled="true">
-            <span>{profileImage.label}</span>
-            <small>{profileImage.replacement}</small>
-          </span>
+          {profileImage.status === "ready" ? (
+            <span className="contact-docket__portrait contact-docket__portrait--ready">
+              <img
+                src={profileImage.src}
+                alt={profileImage.alt}
+                width={profileImage.width}
+                height={profileImage.height}
+              />
+            </span>
+          ) : (
+            <span className="contact-docket__portrait" aria-disabled="true">
+              <span>{profileImage.label}</span>
+              <small>{profileImage.replacement}</small>
+            </span>
+          )}
         </div>
 
         <footer className="contact-docket__footer">

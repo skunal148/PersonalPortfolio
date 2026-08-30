@@ -1,6 +1,67 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
+test("production remains meaningful and navigable without JavaScript", async ({ browser }) => {
+  const context = await browser.newContext({
+    javaScriptEnabled: false,
+    reducedMotion: "reduce",
+    viewport: { width: 1280, height: 900 },
+  });
+  const page = await context.newPage();
+  await page.goto("/");
+
+  await expect(page.getByText("Kunal Shinde", { exact: true }).first()).toBeVisible();
+  await expect(
+    page.getByRole("main").getByRole("heading", {
+      level: 1,
+      name: "Security engineering, made operational.",
+    }),
+  ).toBeVisible();
+  await expect(
+    page.getByText("Vulnerability-remediation ticket-creation turnaround", { exact: true }),
+  ).toBeVisible();
+
+  const evidenceAction = page.getByRole("link", { name: "Explore the evidence" });
+  const contactAction = page.getByRole("link", { name: "Start a conversation" });
+  await expect(evidenceAction).toHaveAttribute("href", "#work");
+  await expect(contactAction).toHaveAttribute("href", "#contact");
+  await evidenceAction.click();
+  await expect(page).toHaveURL(/#work$/);
+  await expect(page.locator("#work")).toBeVisible();
+  await contactAction.click();
+  await expect(page).toHaveURL(/#contact$/);
+  await expect(page.locator("#contact")).toBeVisible();
+
+  await context.close();
+});
+
+test("production hydrates prerendered markup without console integrity errors", async ({ page }) => {
+  const errors: string[] = [];
+  page.on("console", (message) => {
+    if (message.type() === "error") errors.push(message.text());
+  });
+  page.on("pageerror", (error) => errors.push(error.message));
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText(
+    "Security engineering, made operational.",
+  );
+  await page.getByRole("button", { name: "Open section index" }).click();
+  await expect(page.getByRole("navigation", { name: "Primary" })).toBeVisible();
+
+  const missingLabelReferences = await page.locator("[aria-labelledby]").evaluateAll((elements) =>
+    elements.flatMap((element) =>
+      (element.getAttribute("aria-labelledby") ?? "")
+        .split(/\s+/)
+        .filter((id) => id && !document.getElementById(id)),
+    ),
+  );
+
+  expect(missingLabelReferences).toEqual([]);
+  expect(errors).toEqual([]);
+});
+
 test("desktop opening exposes proof and both actions", async ({ page }) => {
   await page.setViewportSize({ width: 1536, height: 1024 });
   await page.goto("/");
