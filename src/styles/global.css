@@ -564,6 +564,17 @@ svg {
   background: rgb(241 234 219 / 82%);
 }
 
+@media (min-width: 56.3125rem) {
+  .docket-hero__outcome .outcome-stamp__caption {
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-end: -4rem;
+    max-width: 28ch;
+    margin-block-start: 0;
+    text-align: start;
+  }
+}
+
 .docket-hero__callouts {
   position: absolute;
   z-index: 3;
@@ -2387,6 +2398,10 @@ svg {
     gap: 1.25rem;
   }
 
+  .case-archive__header {
+    width: auto;
+  }
+
   .case-archive__header p,
   .operational-register__header p {
     max-width: 60ch;
@@ -2462,6 +2477,12 @@ svg {
     grid-template-columns: minmax(0, 1fr);
     align-items: start;
     gap: 1.25rem;
+  }
+
+  .career-trace__header,
+  .services-docket__header,
+  .services-docket__authorization {
+    width: auto;
   }
 
   .career-trace__drawing {
@@ -2656,7 +2677,7 @@ svg {
   }
 
   .docket-hero__callout--scope {
-    inset-inline-end: -1rem;
+    inset-inline-end: 0;
   }
 
   .docket-hero__callout--outcome {

@@ -1,0 +1,324 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-29T23:52:38Z",
+  "title": "Design System: Kunal Shinde Security Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "blueprint": {
+        "role": "primary",
+        "displayName": "Blueprint Navy",
+        "tonalRamp": ["#07131f", "#0b1c2d", "#152538", "oklch(35% 0.035 250)", "oklch(50% 0.03 250)", "oklch(65% 0.025 250)", "oklch(80% 0.018 250)", "oklch(95% 0.008 250)"]
+      },
+      "blueprint-deep": {
+        "role": "primary",
+        "displayName": "Deep Blueprint",
+        "tonalRamp": ["#07131f", "#0b1c2d", "#152538", "oklch(35% 0.035 250)", "oklch(50% 0.03 250)", "oklch(65% 0.025 250)", "oklch(80% 0.018 250)", "oklch(95% 0.008 250)"]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Warm Paper",
+        "tonalRamp": ["oklch(15% 0.018 80)", "oklch(30% 0.025 80)", "oklch(45% 0.03 80)", "oklch(60% 0.035 80)", "oklch(75% 0.03 80)", "#d8cfbd", "#f1eadb", "oklch(97% 0.012 80)"]
+      },
+      "paper-muted": {
+        "role": "neutral",
+        "displayName": "Muted Paper",
+        "tonalRamp": ["oklch(15% 0.018 80)", "oklch(30% 0.025 80)", "oklch(45% 0.03 80)", "oklch(60% 0.035 80)", "oklch(75% 0.03 80)", "#d8cfbd", "#f1eadb", "oklch(97% 0.012 80)"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Folio Ink",
+        "tonalRamp": ["#07131f", "#0b1c2d", "#152538", "oklch(35% 0.035 250)", "oklch(50% 0.03 250)", "oklch(65% 0.025 250)", "oklch(80% 0.018 250)", "oklch(95% 0.008 250)"]
+      },
+      "copper": {
+        "role": "secondary",
+        "displayName": "Annotation Copper",
+        "tonalRamp": ["oklch(15% 0.07 50)", "#704331", "#7d4630", "#8f492f", "#b66a3c", "oklch(72% 0.08 50)", "oklch(84% 0.05 50)", "oklch(95% 0.025 50)"]
+      },
+      "copper-deep": {
+        "role": "secondary",
+        "displayName": "Deep Annotation Copper",
+        "tonalRamp": ["oklch(15% 0.07 50)", "#704331", "#7d4630", "#8f492f", "#b66a3c", "oklch(72% 0.08 50)", "oklch(84% 0.05 50)", "oklch(95% 0.025 50)"]
+      },
+      "verified": {
+        "role": "secondary",
+        "displayName": "Verified Cyan",
+        "tonalRamp": ["oklch(15% 0.055 200)", "oklch(28% 0.07 200)", "#147f88", "#44c0c9", "oklch(78% 0.095 200)", "#87e2e6", "#79e6eb", "oklch(95% 0.035 200)"]
+      },
+      "verified-deep": {
+        "role": "secondary",
+        "displayName": "Deep Verified Cyan",
+        "tonalRamp": ["oklch(15% 0.055 200)", "oklch(28% 0.07 200)", "#147f88", "#44c0c9", "oklch(78% 0.095 200)", "#87e2e6", "#79e6eb", "oklch(95% 0.035 200)"]
+      },
+      "verified-soft": {
+        "role": "secondary",
+        "displayName": "Soft Verified Cyan",
+        "tonalRamp": ["oklch(15% 0.055 200)", "oklch(28% 0.07 200)", "#147f88", "#44c0c9", "oklch(78% 0.095 200)", "#87e2e6", "#79e6eb", "oklch(95% 0.035 200)"]
+      },
+      "vermilion": {
+        "role": "tertiary",
+        "displayName": "Inspection Vermilion",
+        "tonalRamp": ["oklch(15% 0.09 30)", "oklch(28% 0.13 30)", "oklch(40% 0.17 30)", "#df4a39", "oklch(70% 0.16 30)", "oklch(80% 0.11 30)", "oklch(90% 0.06 30)", "oklch(95% 0.03 30)"]
+      },
+      "focus": {
+        "role": "secondary",
+        "displayName": "Focus Cyan",
+        "tonalRamp": ["oklch(15% 0.055 200)", "oklch(28% 0.07 200)", "#147f88", "#44c0c9", "oklch(78% 0.095 200)", "#87e2e6", "#79e6eb", "oklch(95% 0.035 200)"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Opening statements and singular high-impact declarations."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Major section headings in the condensed operational voice."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Record titles and strong component headings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Dense evidence copy that must remain highly legible."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase register titles, statuses, indexes, and navigation."
+      }
+    },
+    "shadows": [
+      {
+        "name": "folio-fold",
+        "value": "0.75rem 0 1.4rem rgb(21 37 56 / 9%)",
+        "purpose": "Paper sheet overlap against an adjacent outcome field."
+      },
+      {
+        "name": "index-edge",
+        "value": "-0.5rem 0 1rem rgb(21 37 56 / 10%)",
+        "purpose": "Punched paper index sitting above a folio edge."
+      },
+      {
+        "name": "title-strip-lift",
+        "value": "0 0.5rem 1rem rgb(0 0 0 / 11%)",
+        "purpose": "Torn title strip placed over a blueprint ledger."
+      },
+      {
+        "name": "developing-sheet-lift",
+        "value": "0 0.65rem 1.25rem rgb(0 0 0 / 13%)",
+        "purpose": "Distinct paper insert within a blueprint register."
+      },
+      {
+        "name": "mobile-sheet-fold",
+        "value": "0 0.75rem 1.5rem rgb(21 37 56 / 8%)",
+        "purpose": "Paper statement sheet overlap after the responsive stack."
+      },
+      {
+        "name": "mobile-index-edge",
+        "value": "0 -0.5rem 1rem rgb(21 37 56 / 9%)",
+        "purpose": "Horizontal case strip overlap after the responsive reflow."
+      },
+      {
+        "name": "punched-recess",
+        "value": "inset 0 0.15rem 0.25rem rgb(0 0 0 / 35%)",
+        "purpose": "Physical depth inside a punched registration hole."
+      },
+      {
+        "name": "keyboard-focus-halo",
+        "value": "0 0 0 5px var(--ink-blueprint)",
+        "purpose": "Dark outer support behind the cyan keyboard-focus outline."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-folio",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Shared fast-out easing for state changes, entrances, routes, and the stamp."
+      },
+      {
+        "name": "state-fast",
+        "value": "160ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Hover lifts, color inversions, nav underlines, and toggle strokes."
+      },
+      {
+        "name": "index-reveal",
+        "value": "220ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Responsive primary-navigation expansion."
+      },
+      {
+        "name": "ledger-enter",
+        "value": "320ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Bounded evidence-ledger opacity and vertical registration."
+      },
+      {
+        "name": "stamp-land",
+        "value": "380ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Single landing beat shared by the inspection mark and carbon copy."
+      },
+      {
+        "name": "route-draw",
+        "value": "700ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "One-time semantic workflow-route reveal; the outcome segment begins after 90ms."
+      },
+      {
+        "name": "reduced-motion-final",
+        "value": "0.01ms",
+        "purpose": "Reduced-motion override that exposes all components in their final readable state."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact",
+        "value": "40rem"
+      },
+      {
+        "name": "stacked-folio",
+        "value": "56.25rem"
+      },
+      {
+        "name": "expanded-folio",
+        "value": "56.3125rem"
+      },
+      {
+        "name": "wide",
+        "value": "75rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Docket Action",
+      "kind": "button",
+      "refersTo": "docket-action-primary",
+      "description": "The consequential paper-surface action, used sparingly for the strongest available route.",
+      "html": "<a class=\"ds-docket-action ds-docket-action--primary\" href=\"#evidence\">Explore the evidence</a>",
+      "css": ".ds-docket-action { position: relative; min-height: 3.25rem; padding: .85rem 3.25rem .75rem 1.35rem; display: inline-flex; align-items: center; border: 1px solid currentColor; border-radius: 0; font-family: var(--display, 'Barlow Condensed', 'Arial Narrow', sans-serif); font-size: 1rem; font-weight: 700; letter-spacing: .06em; line-height: 1; text-decoration: none; text-transform: uppercase; transition: background-color 160ms cubic-bezier(.16,1,.3,1), color 160ms cubic-bezier(.16,1,.3,1), transform 160ms cubic-bezier(.16,1,.3,1); } .ds-docket-action::before { content: ''; position: absolute; right: 1.1rem; top: 50%; width: 1.15rem; height: 1px; background: currentColor; } .ds-docket-action::after { content: ''; position: absolute; right: 1.1rem; top: 50%; width: .42rem; height: .42rem; border-top: 1px solid currentColor; border-right: 1px solid currentColor; transform: translateY(-50%) rotate(45deg); } .ds-docket-action:hover { transform: translateY(-2px); } .ds-docket-action:focus-visible { outline: 3px solid var(--focus, #79e6eb); outline-offset: 3px; box-shadow: 0 0 0 5px var(--ink-blueprint, #0b1c2d); } .ds-docket-action--primary { border-color: var(--vermilion, #df4a39); background: var(--vermilion, #df4a39); color: #07131f; } .ds-docket-action--primary:hover { border-color: var(--ink-blueprint, #0b1c2d); background: var(--ink-blueprint, #0b1c2d); color: var(--paper, #f1eadb); }"
+    },
+    {
+      "name": "Secondary Docket Action",
+      "kind": "button",
+      "refersTo": "docket-action-secondary",
+      "description": "The adjacent conversation route, expressed as an unfilled ruled control.",
+      "html": "<a class=\"ds-docket-action ds-docket-action--secondary\" href=\"#contact\">Start a conversation</a>",
+      "css": ".ds-docket-action { position: relative; min-height: 3.25rem; padding: .85rem 3.25rem .75rem 1.35rem; display: inline-flex; align-items: center; border: 1px solid currentColor; border-radius: 0; color: var(--ink, #152538); font-family: var(--display, 'Barlow Condensed', 'Arial Narrow', sans-serif); font-size: 1rem; font-weight: 700; letter-spacing: .06em; line-height: 1; text-decoration: none; text-transform: uppercase; transition: background-color 160ms cubic-bezier(.16,1,.3,1), color 160ms cubic-bezier(.16,1,.3,1), transform 160ms cubic-bezier(.16,1,.3,1); } .ds-docket-action::before { content: ''; position: absolute; right: 1.1rem; top: 50%; width: 1.15rem; height: 1px; background: currentColor; } .ds-docket-action::after { content: ''; position: absolute; right: 1.1rem; top: 50%; width: .42rem; height: .42rem; border-top: 1px solid currentColor; border-right: 1px solid currentColor; transform: translateY(-50%) rotate(45deg); } .ds-docket-action:hover { transform: translateY(-2px); } .ds-docket-action:focus-visible { outline: 3px solid var(--focus, #79e6eb); outline-offset: 3px; box-shadow: 0 0 0 5px var(--ink-blueprint, #0b1c2d); } .ds-docket-action--secondary:hover { background: var(--ink, #152538); color: var(--paper, #f1eadb); }"
+    },
+    {
+      "name": "Blueprint Navigation Link",
+      "kind": "nav",
+      "refersTo": "blueprint-navigation-link",
+      "description": "A condensed uppercase route drawn directly onto the blueprint header field.",
+      "html": "<nav class=\"ds-blueprint-nav\" aria-label=\"Preview navigation\"><a class=\"ds-blueprint-nav__link\" href=\"#work\">Work</a></nav>",
+      "css": ".ds-blueprint-nav { padding: .75rem 1.25rem; background: var(--ink-blueprint, #0b1c2d); color: var(--paper, #f1eadb); } .ds-blueprint-nav__link { position: relative; min-height: 2.75rem; padding: 0 .25rem; display: inline-grid; place-items: center; color: inherit; font-family: var(--display, 'Barlow Condensed', 'Arial Narrow', sans-serif); font-size: 1rem; font-weight: 700; letter-spacing: .13em; text-decoration: none; text-transform: uppercase; } .ds-blueprint-nav__link::after { content: ''; position: absolute; inset-inline: 0; bottom: .25rem; height: 1px; background: var(--verified, #44c0c9); transform: scaleX(0); transform-origin: left; transition: transform 160ms cubic-bezier(.16,1,.3,1); } .ds-blueprint-nav__link:hover::after, .ds-blueprint-nav__link:focus-visible::after { transform: scaleX(1); } .ds-blueprint-nav__link:focus-visible { outline: 3px solid var(--focus, #79e6eb); outline-offset: 3px; box-shadow: 0 0 0 5px var(--ink-blueprint, #0b1c2d); }"
+    },
+    {
+      "name": "Blueprint Index Toggle",
+      "kind": "button",
+      "refersTo": "blueprint-index-toggle",
+      "description": "The square mobile index control with ruled open and close states.",
+      "html": "<button class=\"ds-index-toggle\" type=\"button\" aria-expanded=\"false\"><span>Index</span><span class=\"ds-index-toggle__mark\" aria-hidden=\"true\"><i></i><i></i></span></button>",
+      "css": ".ds-index-toggle { min-width: 4.75rem; min-height: 2.75rem; padding: .45rem .6rem; display: flex; align-items: center; justify-content: space-between; gap: .65rem; border: 1px solid rgb(121 230 235 / 62%); border-radius: 0; background: var(--ink-blueprint, #0b1c2d); color: var(--paper, #f1eadb); font-family: var(--display, 'Barlow Condensed', 'Arial Narrow', sans-serif); font-size: .9rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; cursor: pointer; } .ds-index-toggle__mark { width: 1.05rem; display: grid; gap: .32rem; } .ds-index-toggle__mark i { width: 100%; height: 1px; display: block; background: currentColor; transition: transform 160ms cubic-bezier(.16,1,.3,1); } .ds-index-toggle:hover { border-color: rgb(121 230 235 / 62%); } .ds-index-toggle:focus-visible { outline: 3px solid var(--focus, #79e6eb); outline-offset: 3px; box-shadow: 0 0 0 5px var(--ink-blueprint, #0b1c2d); } .ds-index-toggle[aria-expanded='true'] .ds-index-toggle__mark i:first-child { transform: translateY(.17rem) rotate(45deg); } .ds-index-toggle[aria-expanded='true'] .ds-index-toggle__mark i:last-child { transform: translateY(-.17rem) rotate(-45deg); }"
+    },
+    {
+      "name": "Active Section Index",
+      "kind": "nav",
+      "refersTo": "section-index-active",
+      "description": "A punched paper index route with a vermilion active edge.",
+      "html": "<nav class=\"ds-section-index\" aria-label=\"Case index preview\"><a class=\"ds-section-index__item\" href=\"#automation\" aria-current=\"location\"><span class=\"ds-section-index__number\">01</span><span class=\"ds-section-index__label\">Automation</span></a></nav>",
+      "css": ".ds-section-index { width: 7rem; min-height: 15rem; border-left: 1px solid rgb(21 37 56 / 24%); background: var(--paper, #f1eadb); color: var(--ink, #152538); box-shadow: -.5rem 0 1rem rgb(21 37 56 / 10%); } .ds-section-index__item { position: relative; height: 100%; min-height: 15rem; padding: 1.4rem .75rem 1rem; display: flex; align-items: center; gap: .75rem; color: inherit; text-decoration: none; writing-mode: vertical-rl; } .ds-section-index__item::before { content: ''; position: absolute; top: .85rem; left: .45rem; width: .7rem; height: .7rem; border: 1px solid rgb(21 37 56 / 55%); border-radius: 50%; background: var(--ink-blueprint, #0b1c2d); box-shadow: inset 0 .15rem .25rem rgb(0 0 0 / 35%); } .ds-section-index__item::after { content: ''; position: absolute; inset-block: 0; left: 0; width: 3px; background: var(--vermilion, #df4a39); transform: scaleY(1); transform-origin: top; transition: transform 160ms cubic-bezier(.16,1,.3,1); } .ds-section-index__number, .ds-section-index__label { font-family: var(--display, 'Barlow Condensed', 'Arial Narrow', sans-serif); font-weight: 700; text-transform: uppercase; } .ds-section-index__number { color: var(--vermilion, #df4a39); font-size: 1.3rem; } .ds-section-index__label { font-size: 1.05rem; letter-spacing: .035em; } .ds-section-index__item:hover::after, .ds-section-index__item:focus-visible::after { transform: scaleY(1); } .ds-section-index__item:focus-visible { outline: 3px solid var(--focus, #79e6eb); outline-offset: 3px; box-shadow: 0 0 0 5px var(--ink-blueprint, #0b1c2d); }"
+    },
+    {
+      "name": "Ready Destination",
+      "kind": "card",
+      "refersTo": "destination-ready",
+      "description": "An enabled contact register cell that inverts from paper to blueprint.",
+      "html": "<a class=\"ds-destination\" href=\"#destination\"><span>LinkedIn</span><small>Open destination</small></a>",
+      "css": ".ds-destination { min-width: 0; min-height: 7.5rem; padding: 1.4rem 1.75rem; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid rgb(21 37 56 / 22%); border-bottom: 1px solid rgb(21 37 56 / 22%); border-radius: 0; background: var(--paper, #f1eadb); color: var(--ink, #152538); text-decoration: none; } .ds-destination > span { font-family: var(--display, 'Barlow Condensed', 'Arial Narrow', sans-serif); font-size: 2rem; font-weight: 700; line-height: 1; text-transform: uppercase; } .ds-destination small { margin-top: .8rem; color: #7d4630; font-family: var(--body, 'Atkinson Hyperlegible Next', 'Segoe UI', sans-serif); font-size: .86rem; font-weight: 700; } .ds-destination:hover, .ds-destination:focus-visible { background: var(--ink-blueprint, #0b1c2d); color: var(--paper, #f1eadb); } .ds-destination:hover small, .ds-destination:focus-visible small { color: var(--verified, #44c0c9); } .ds-destination:focus-visible { outline: 3px solid var(--focus, #79e6eb); outline-offset: 3px; box-shadow: 0 0 0 5px var(--ink-blueprint, #0b1c2d); }"
+    },
+    {
+      "name": "Evidence Ledger Row",
+      "kind": "custom",
+      "refersTo": "evidence-ledger-row",
+      "description": "The canonical index, label, and proof row used inside blueprint evidence registers.",
+      "html": "<article class=\"ds-evidence-row\"><div class=\"ds-evidence-row__index\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"10.5\" cy=\"10.5\" r=\"5.5\"/><path d=\"m14.6 14.6 5 5M10.5 7.5v3l2 1.5\"/></svg><span>01</span></div><h3 class=\"ds-evidence-row__label\">Problem</h3><p class=\"ds-evidence-row__proof\">A concise, source-backed operating constraint belongs here.</p></article>",
+      "css": ".ds-evidence-row { min-height: 8.25rem; display: grid; grid-template-columns: minmax(7rem,11rem) minmax(10rem,15rem) minmax(0,1fr); align-items: stretch; border-bottom: 1px solid rgb(121 230 235 / 28%); background: var(--ink-blueprint, #0b1c2d); color: var(--paper, #f1eadb); } .ds-evidence-row__index, .ds-evidence-row__label, .ds-evidence-row__proof { min-width: 0; margin: 0; padding: 1rem 1.5rem; display: flex; align-items: center; border-right: 1px solid rgb(121 230 235 / 22%); } .ds-evidence-row__index { justify-content: space-between; gap: .8rem; color: var(--verified, #44c0c9); font-family: var(--display, 'Barlow Condensed', 'Arial Narrow', sans-serif); font-size: 2rem; font-weight: 700; } .ds-evidence-row__index svg { width: 2.65rem; height: 2.65rem; padding: .35rem; border: 1px solid rgb(121 230 235 / 46%); border-radius: 50%; fill: none; stroke: currentColor; stroke-width: 1.35; stroke-linecap: square; stroke-linejoin: miter; } .ds-evidence-row__label { color: var(--verified, #44c0c9); font-family: var(--display, 'Barlow Condensed', 'Arial Narrow', sans-serif); font-size: 1.75rem; font-weight: 700; letter-spacing: .075em; text-transform: uppercase; } .ds-evidence-row__proof { max-width: 76ch; border-right: 0; font-family: var(--body, 'Atkinson Hyperlegible Next', 'Segoe UI', sans-serif); font-size: 1.05rem; line-height: 1.5; } @media (max-width: 56.25rem) { .ds-evidence-row { grid-template-columns: 5.25rem minmax(0,1fr); } .ds-evidence-row__index { grid-row: 1 / span 2; padding: 1rem .75rem; flex-direction: column; justify-content: center; } .ds-evidence-row__label { padding: 1rem 1.25rem .25rem; border-right: 0; } .ds-evidence-row__proof { padding: .3rem 1.25rem 1.35rem; } }"
+    },
+    {
+      "name": "Outcome Inspection Stamp",
+      "kind": "custom",
+      "refersTo": "outcome-stamp",
+      "description": "The signature worn inspection mark layered over a faint carbon-copy state.",
+      "html": "<figure class=\"ds-outcome-stamp\"><span class=\"ds-outcome-stamp__before\" aria-hidden=\"true\">5 DAYS</span><span class=\"ds-outcome-stamp__mark\"><svg class=\"ds-outcome-stamp__border\" viewBox=\"0 0 352 228\" aria-hidden=\"true\"><rect x=\"8\" y=\"8\" width=\"336\" height=\"212\"/><rect x=\"19\" y=\"19\" width=\"314\" height=\"190\"/><path d=\"M34 48h284M34 180h284\"/></svg><strong>&lt;5 MIN</strong></span><figcaption>Verified operating outcome</figcaption></figure>",
+      "css": ".ds-outcome-stamp { position: relative; isolation: isolate; width: min(100%,27rem); min-height: 18rem; margin: 0; display: grid; place-items: center; color: var(--vermilion, #df4a39); } .ds-outcome-stamp__before { position: absolute; z-index: -1; top: 50%; left: 50%; color: var(--copper, #b66a3c); font-family: var(--display, 'Barlow Condensed', 'Arial Narrow', sans-serif); font-size: 8rem; font-weight: 700; letter-spacing: -.035em; line-height: .82; opacity: .16; transform: translate(-54%,-54%) rotate(-7deg) scaleX(1.04); } .ds-outcome-stamp__mark { position: relative; width: min(88%,22rem); aspect-ratio: 1.55; display: grid; place-items: center; transform: rotate(-4deg); } .ds-outcome-stamp__border { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: currentColor; } .ds-outcome-stamp__border rect:first-child { stroke-width: 7; } .ds-outcome-stamp__border rect:nth-child(2) { stroke-width: 2; } .ds-outcome-stamp__border path { stroke-width: 2; stroke-dasharray: 31 7 3 6; } .ds-outcome-stamp__mark strong { padding-inline: .15em; color: currentColor; font-family: var(--display, 'Barlow Condensed', 'Arial Narrow', sans-serif); font-size: 8.75rem; font-weight: 700; letter-spacing: -.04em; line-height: .78; text-transform: uppercase; } .ds-outcome-stamp figcaption { max-width: 32ch; margin-top: -1rem; color: var(--ink, #152538); font-family: var(--body, 'Atkinson Hyperlegible Next', 'Segoe UI', sans-serif); font-size: .875rem; font-weight: 700; line-height: 1.35; text-align: center; } @media (prefers-reduced-motion: no-preference) { .ds-outcome-stamp__before { animation: ds-carbon-register 380ms cubic-bezier(.16,1,.3,1) both; } .ds-outcome-stamp__mark { animation: ds-stamp-land 380ms cubic-bezier(.16,1,.3,1) both; } } @keyframes ds-carbon-register { from { opacity: .08; transform: translate(-58%,-57%) rotate(-9deg) scaleX(1.04); } } @keyframes ds-stamp-land { from { opacity: .55; transform: translateY(-1.25rem) rotate(-7deg) scale(1.08); } 76% { transform: translateY(.08rem) rotate(-3.5deg) scale(.985); } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Change-Control Folio",
+    "overview": "Change-Control Folio treats the interface as a working record: warm paper sheets, navy blueprint fields, carbon-copy annotations, routed diagrams, and inspection marks. The system feels technical, accountable, and handled by people—not theatrical, glossy, or terminal-themed.\n\nEvidence Docket is the composition grammar inside that world. Information is organized as ruled registers, numbered rows, edge indexes, annotations, and flat overlapping sheets; the visitor should be able to trace each visual claim through a clear sequence.\n\nDensity is deliberate but never cramped. Condensed display type carries labels and headings while a hyperlegible sans serif handles proof, with cyan reserved for verified routes and vermilion reserved for consequential outcomes.",
+    "keyCharacteristics": [
+      "Sharp, square folio sheets with one-pixel ruled construction.",
+      "Warm paper alternating with blueprint navy ledgers.",
+      "Condensed industrial hierarchy paired with hyperlegible body copy.",
+      "Cyan verification routes, vermilion outcome marks, and copper annotation traces.",
+      "Flat overlap and paper grain instead of generic digital-card elevation.",
+      "Responsive reflow that preserves evidence order and physical-document cues."
+    ],
+    "rules": [
+      {
+        "name": "The Evidence Ink Rule",
+        "body": "Cyan means verified route, active evidence, or system connection; it is not ambient decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The Vermilion Rarity Rule",
+        "body": "Reserve vermilion for consequential actions, outcomes, and state changes so every mark retains authority.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Voice Rule",
+        "body": "Condensed type names the record; hyperlegible type explains the evidence. Do not use the display face for paragraphs or the body face for oversized spectacle.",
+        "section": "typography"
+      },
+      {
+        "name": "The Evidence Order Rule",
+        "body": "Responsive reflow may change orientation and column count, but it never changes the logical sequence of index, label, evidence, and outcome.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Use rules, tonal changes, and sheet overlap first; add a shadow only when it explains a physical layer or an interaction state.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Ruled Edge Rule",
+        "body": "If a shape does not communicate paper construction, routing, registration, or status, keep it square and let the grid carry the form.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Bounded Motion Rule",
+        "body": "Motion confirms a route, stamp, menu, or visibility change once; it never loops, blocks reading, or carries required meaning.",
+        "section": "components"
+      },
+      {
+        "name": "The Blueprint Focus Rule",
+        "body": "Every interactive element receives the same high-contrast cyan outline and navy halo, including paper-surface controls.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "Do alternate warm paper and blueprint ledgers to establish section authority.",
+      "Do use one-pixel rules, numbered indexes, leaders, and registration marks to make relationships explicit.",
+      "Do preserve Problem → Intervention → Outcome and equivalent evidence sequences at every breakpoint.",
+      "Do reserve cyan for verified routes and vermilion for consequential outcomes or actions.",
+      "Do keep body copy in the hyperlegible face and display copy short, condensed, and operational.",
+      "Do honor `prefers-reduced-motion` by presenting every component in its final readable state."
+    ],
+    "donts": [
+      "Don't introduce generic rounded cards, pill chips, glass panels, gradient glows, or hacker-terminal spectacle.",
+      "Don't use paper texture or blueprint grid as a substitute for semantic grouping and real rules.",
+      "Don't scatter vermilion or cyan as decorative color; each accent must communicate a system role.",
+      "Don't add floating elevation to ordinary containers or round the square folio controls.",
+      "Don't animate continuously, reorder evidence for visual novelty, or hide required information behind motion.",
+      "Don't fabricate enabled states for unavailable destinations; placeholders remain explicit and inert."
+    ]
+  }
+}
