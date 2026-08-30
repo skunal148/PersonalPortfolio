@@ -19,17 +19,16 @@ describe("conversion sections", () => {
     expect(within(trace).getByText(/direction of growth/i)).toBeInTheDocument();
   });
 
-  it("labels developing services separately from current capabilities", () => {
+  it("renders only the verified current services and authorization boundary", () => {
     render(<ServicesDocket services={portfolio.services} />);
 
     const current = screen.getByRole("region", { name: /current capability/i });
-    const developing = screen.getByRole("region", { name: /building next/i });
 
     expect(within(current).getByText(/microsoft security/i)).toBeInTheDocument();
-    expect(
-      within(developing).getByRole("heading", { level: 4, name: "Product Security" }),
-    ).toBeInTheDocument();
-    expect(within(developing).queryByRole("link")).not.toBeInTheDocument();
+    expect(within(current).getAllByRole("listitem")).toHaveLength(3);
+    expect(screen.queryByRole("region", { name: /building next/i })).not.toBeInTheDocument();
+    expect(screen.queryByText(/manual web\/api penetration testing/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/product security/i)).not.toBeInTheDocument();
     expect(screen.getByText(/only with explicit authorization and agreed boundaries/i)).toBeInTheDocument();
   });
 

@@ -22,7 +22,7 @@ export type CapabilityGroup = {
 export type Service = {
   title: string;
   description: string;
-  status: "current" | "building-next";
+  status: "current";
 };
 
 export type ExternalDestination =

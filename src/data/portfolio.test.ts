@@ -57,12 +57,8 @@ describe("portfolio content", () => {
     });
   });
 
-  it("separates current services from developing capabilities", () => {
-    expect(
-      portfolio.services.some((service) => service.status === "current"),
-    ).toBe(true);
-    expect(
-      portfolio.services.some((service) => service.status === "building-next"),
-    ).toBe(true);
+  it("publishes only the three verified current services", () => {
+    expect(portfolio.services).toHaveLength(3);
+    expect(portfolio.services.every((service) => service.status === "current")).toBe(true);
   });
 });

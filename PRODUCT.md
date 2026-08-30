@@ -41,7 +41,6 @@ The career story progresses from software development through infrastructure and
 - An internal Rewards & Recognition portal was developed with Microsoft SSO and SCIM integration.
 - Supporting evidence includes BEC investigation and containment, ownership of a 185+ vulnerability-remediation program, Intune and Conditional Access implementation, security monitoring, VAPT, risk management, POCs, and security-awareness work.
 - Current freelance-ready areas include Microsoft identity and endpoint security, vulnerability assessment and remediation workflows, security automation and integrations, pfSense/network hardening, monitoring and alert tuning, security procedures, and SSO/SAML/SCIM integration.
-- Advanced web/API penetration testing, Product Security, secure SDLC, threat modeling, and red-team work must be presented as developing directions unless additional completed evidence is supplied.
 - OSCP must be presented only as in progress or planned unless the user later confirms completion.
 - The public portfolio must not include private salary projections, marketplace pricing advice, or unverified marketplace statistics from the source conversation.
 - The site is informational and static. It will not imply a working backend contact form.

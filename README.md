@@ -37,4 +37,4 @@ Do not add that sitemap line until the hostname is confirmed.
 
 ## Content truth
 
-Do not add a claim, metric, client, employer, certification, testimonial, or project detail without evidence Kunal has approved for public use. The page deliberately separates proven work from developing directions and exposes only approved public destinations.
+Do not add a claim, metric, client, employer, certification, testimonial, or project detail without evidence Kunal has approved for public use. The page presents verified current work and exposes only approved public destinations.

@@ -155,7 +155,7 @@ A restrained routed timeline explains the meaningful progression:
 
 `Software development → infrastructure and networking → cybersecurity operations → security engineering and automation → identity, cloud, product, and architecture trajectory`
 
-The final destinations are labeled as `direction of growth`, not completed senior titles. OSCP appears only in a `Building next` line and only as `planned` or `in progress` once Kunal supplies the correct status.
+The final destinations are labeled as `direction of growth`, not completed senior titles. OSCP is omitted until Kunal supplies and approves the correct public status.
 
 ### 4.7 Services Docket
 
@@ -165,7 +165,7 @@ Services are grouped around the same three commercial pillars identified in the 
 2. **Vulnerability and security engineering:** Nessus/OpenVAS assessments, remediation workflows, pfSense review, and security hardening.
 3. **Security automation:** Python/API integrations, GLPI workflows, and security-tool process automation.
 
-Available-now services receive a `Current capability` stamp. Developing services—manual web/API penetration testing, secure SDLC, threat modeling, Product Security, and advanced offensive work—appear in a separate `Building next` strip and are not given inquiry buttons.
+Each verified service receives a `Current capability` stamp. Inferred future services and unconfirmed career directions are omitted from the public page.
 
 No public prices are shown. Every service description emphasizes authorized, scoped security work.
 
@@ -279,7 +279,7 @@ The mobile version is a recomposition inside the same world, not a scaled-down d
 - Use semantic landmarks, one `h1`, ordered headings, lists, buttons, and anchors.
 - Provide a skip link and stable anchor targets.
 - Give SVG diagrams titles and concise textual equivalents.
-- Do not use color alone to distinguish Problem, Intervention, Outcome, current capability, or building-next states.
+- Do not use color alone to distinguish Problem, Intervention, Outcome, or current-capability states.
 - Maintain visible `:focus-visible` treatment in both navy and paper regions.
 - Keep body text comfortably readable and avoid using condensed display type for paragraphs.
 - Preserve content and navigation without motion.
@@ -319,7 +319,7 @@ The mobile version is a recomposition inside the same world, not a scaled-down d
 
 - Component tests verify the three cases and evidence rows render from typed data.
 - Tests verify placeholder destinations are not interactive anchors.
-- Tests verify service items correctly separate current capability from building-next items.
+- Tests verify that only the three approved current services render.
 - Accessibility checks cover heading order, landmark presence, labels, and primary contrast-sensitive states.
 - `npm run build` must produce a successful static bundle.
 - A base-path check loads the built site from a nested path matching GitHub Pages behavior.
@@ -342,7 +342,7 @@ The implementation is ready when:
 - The opening truthfully states the ticket-creation metric and does not overclaim its meaning.
 - Employers and clients have distinct, understandable paths supported by the same proof.
 - All three selected systems and the operational evidence register are present.
-- Current services and developing capabilities are visually and semantically distinct.
+- Only the three approved current services appear in the services docket.
 - Every absent personal asset or URL appears as an explicit non-interactive placeholder.
 - No fabricated claims, private salary data, or unverified marketplace statistics appear.
 - Keyboard, contrast, semantic structure, responsive behavior, and reduced-motion support pass verification.

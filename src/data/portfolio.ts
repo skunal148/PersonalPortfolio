@@ -142,26 +142,6 @@ export const portfolio = {
         "Authorized, scoped Python/API integrations, GLPI workflows, and security-tool process automation.",
       status: "current",
     },
-    {
-      title: "Manual web/API penetration testing",
-      description: "Developing direction for authorized, scoped manual web and API penetration testing.",
-      status: "building-next",
-    },
-    {
-      title: "Secure SDLC and threat modeling",
-      description: "Developing direction for secure SDLC practices and threat modeling.",
-      status: "building-next",
-    },
-    {
-      title: "Product Security",
-      description: "Developing direction for Product Security work.",
-      status: "building-next",
-    },
-    {
-      title: "Advanced offensive work",
-      description: "Developing direction for advanced offensive security work.",
-      status: "building-next",
-    },
   ],
   destinations: [
     {
