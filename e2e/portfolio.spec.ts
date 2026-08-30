@@ -74,6 +74,43 @@ test("desktop opening exposes proof and both actions", async ({ page }) => {
   await expect(page.getByRole("link", { name: "Start a conversation" })).toBeVisible();
 });
 
+test("desktop career route stays clear of every stage label", async ({ page }) => {
+  await page.setViewportSize({ width: 1459, height: 900 });
+  await page.goto("/");
+  await page.locator(".career-trace").scrollIntoViewIfNeeded();
+
+  const collisions = await page.evaluate(() => {
+    const path = document.querySelector<SVGPathElement>(".career-trace__route-line");
+    const labels = Array.from(
+      document.querySelectorAll<HTMLElement>(".career-trace__stage strong"),
+    );
+    const matrix = path?.getScreenCTM();
+    if (!path || !matrix) throw new Error("Expected the desktop career route");
+
+    return labels.flatMap((label, index) => {
+      const rect = label.getBoundingClientRect();
+      const routeLength = path.getTotalLength();
+
+      for (let distance = 0; distance <= routeLength; distance += 1) {
+        const point = path.getPointAtLength(distance);
+        const screenPoint = new DOMPoint(point.x, point.y).matrixTransform(matrix);
+        if (
+          screenPoint.x >= rect.left - 2 &&
+          screenPoint.x <= rect.right + 2 &&
+          screenPoint.y >= rect.top - 2 &&
+          screenPoint.y <= rect.bottom + 2
+        ) {
+          return [{ stage: index + 1, label: label.textContent?.trim() ?? "" }];
+        }
+      }
+
+      return [];
+    });
+  });
+
+  expect(collisions).toEqual([]);
+});
+
 test("mobile page has no horizontal document overflow", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
