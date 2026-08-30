@@ -1,0 +1,15 @@
+{
+  "name": "Kunal Shinde — Security Engineering & Automation",
+  "short_name": "Kunal Shinde",
+  "description": "Security engineering portfolio focused on vulnerability management, identity, incident response, and workflow automation.",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#0B1C2D",
+  "background_color": "#F1EADB",
+  "display": "browser"
+}
