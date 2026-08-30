@@ -11,14 +11,50 @@ describe("portfolio content", () => {
     expect(flagship.outcome).not.toMatch(/triage|full remediation|scan time/i);
   });
 
-  it("keeps missing external destinations non-interactive", () => {
+  it("publishes every supplied footer destination with its approved URL", () => {
     expect(portfolio.destinations).toHaveLength(6);
-    expect(
-      portfolio.destinations.every(
-        (destination) =>
-          destination.status === "placeholder" && !("href" in destination),
-      ),
-    ).toBe(true);
+    expect(portfolio.destinations).toEqual([
+      {
+        status: "ready",
+        label: "Resume PDF",
+        href: "./assets/kunal-shinde-resume.pdf",
+      },
+      {
+        status: "ready",
+        label: "Email",
+        href: "mailto:skunal148@gmail.com",
+      },
+      {
+        status: "ready",
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/in/kunal-shinde-5a91211b5/",
+      },
+      {
+        status: "ready",
+        label: "GitHub",
+        href: "https://github.com/skunal148",
+      },
+      {
+        status: "ready",
+        label: "Fiverr",
+        href: "https://www.fiverr.com/sellers/kunalshinde31/",
+      },
+      {
+        status: "ready",
+        label: "Upwork",
+        href: "https://www.upwork.com/freelancers/~01865c7222af99e067?mp_source=share",
+      },
+    ]);
+  });
+
+  it("publishes the supplied portrait with stable local metadata", () => {
+    expect(portfolio.profileImage).toEqual({
+      status: "ready",
+      src: "./assets/kunal-shinde.webp",
+      alt: "Kunal Shinde, security engineer",
+      width: 1254,
+      height: 1254,
+    });
   });
 
   it("separates current services from developing capabilities", () => {

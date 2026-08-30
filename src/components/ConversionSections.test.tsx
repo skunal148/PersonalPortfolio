@@ -33,16 +33,24 @@ describe("conversion sections", () => {
     expect(screen.getByText(/only with explicit authorization and agreed boundaries/i)).toBeInTheDocument();
   });
 
-  it("does not render replacement destinations as links", () => {
+  it("keeps explicitly unavailable destinations non-interactive", () => {
+    const destinations: ExternalDestination[] = [
+      { status: "placeholder", label: "Unavailable", replacement: "Not supplied" },
+    ];
+
     render(
       <ContactDocket
-        destinations={portfolio.destinations}
-        profileImage={portfolio.profileImage}
+        destinations={destinations}
+        profileImage={{
+          status: "placeholder",
+          label: "Professional headshot",
+          replacement: "Add image",
+        }}
       />,
     );
 
     expect(screen.queryAllByRole("link")).toHaveLength(0);
-    expect(screen.getByText("Résumé PDF").closest(".destination")).toHaveAttribute(
+    expect(screen.getByText("Unavailable").closest(".destination")).toHaveAttribute(
       "aria-disabled",
       "true",
     );
@@ -51,6 +59,39 @@ describe("conversion sections", () => {
       "true",
     );
     expect(screen.queryByRole("img")).not.toBeInTheDocument();
+  });
+
+  it("renders the completed footer with resume, contact links, and portrait", () => {
+    render(
+      <ContactDocket
+        destinations={portfolio.destinations}
+        profileImage={portfolio.profileImage}
+      />,
+    );
+
+    expect(screen.getAllByRole("link")).toHaveLength(6);
+    expect(screen.getByRole("link", { name: /resume pdf/i })).toHaveAttribute(
+      "href",
+      "./assets/kunal-shinde-resume.pdf",
+    );
+    expect(screen.getByRole("link", { name: /email/i })).toHaveAttribute(
+      "href",
+      "mailto:skunal148@gmail.com",
+    );
+    expect(screen.getByRole("link", { name: /email/i })).not.toHaveAttribute("target");
+    expect(screen.getByRole("link", { name: /upwork/i })).toHaveAttribute(
+      "href",
+      "https://www.upwork.com/freelancers/~01865c7222af99e067?mp_source=share",
+    );
+    expect(screen.getByRole("link", { name: /upwork/i })).toHaveAttribute("target", "_blank");
+    expect(screen.getByRole("link", { name: /upwork/i })).toHaveAttribute(
+      "rel",
+      "noopener noreferrer",
+    );
+    expect(
+      screen.getByRole("img", { name: "Kunal Shinde, security engineer" }),
+    ).toHaveAttribute("src", "./assets/kunal-shinde.webp");
+    expect(screen.getByText(/contact destinations are active/i)).toBeInTheDocument();
   });
 
   it("renders only typed ready destinations as external links", () => {
@@ -71,7 +112,10 @@ describe("conversion sections", () => {
       "https://example.com/kunal",
     );
     expect(screen.getByRole("link", { name: /linkedin/i })).toHaveAttribute("target", "_blank");
-    expect(screen.getByRole("link", { name: /linkedin/i })).toHaveAttribute("rel", "noreferrer");
+    expect(screen.getByRole("link", { name: /linkedin/i })).toHaveAttribute(
+      "rel",
+      "noopener noreferrer",
+    );
     expect(screen.getByText("GitHub").closest(".destination")).toHaveAttribute(
       "aria-disabled",
       "true",

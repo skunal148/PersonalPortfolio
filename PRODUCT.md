@@ -51,12 +51,13 @@ The career story progresses from software development through infrastructure and
 - Public name: Kunal Shinde.
 - Voice: technically credible, direct, evidence-led, commercially clear, and free of inflated "ethical hacker" claims.
 - The site must serve hiring and freelance conversion without keyword soup or an indiscriminate list of tools.
-- Resume, headshot, email, LinkedIn, GitHub, Fiverr, and Upwork are explicit polished placeholders until real assets and URLs are provided.
+- Resume, headshot, email, LinkedIn, GitHub, Fiverr, and Upwork are approved public destinations and assets in the contact docket.
 
 ## Evidence on Hand
 
 - Source conversation: https://chatgpt.com/share/6a92ee8b-844c-83e8-9555-3d396128ed72
-- No resume PDF, headshot, social profile URLs, testimonials, customer logos, screenshots, architecture diagrams, or public project repositories are currently present in the workspace.
+- The approved resume PDF, headshot, email, LinkedIn, GitHub, Fiverr, and Upwork destinations are present in the workspace.
+- No testimonials, customer logos, project screenshots, or public architecture diagrams are currently present in the workspace.
 - The build must not fabricate employers, clients, testimonials, certifications, project adoption, confidential implementation detail, or additional metrics.
 - Case-study diagrams may use clearly labeled conceptual or redacted representations when necessary to explain a workflow without exposing organizational data.
 

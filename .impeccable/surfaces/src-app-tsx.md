@@ -15,7 +15,7 @@ Hiring managers and prospective clients must understand Kunal's security-enginee
 
 ## Constraints
 
-Static React/Vite/TypeScript build deployable to GitHub Pages. No invented employers, clients, testimonials, certifications, links, adoption metrics, or confidential implementation details. Resume, headshot, email, LinkedIn, GitHub, Fiverr, and Upwork remain explicit replacement placeholders. Keyboard, contrast, responsive, and reduced-motion requirements apply.
+Static React/Vite/TypeScript build deployable to GitHub Pages. No invented employers, clients, testimonials, certifications, links, adoption metrics, or confidential implementation details. Resume, headshot, email, LinkedIn, GitHub, Fiverr, and Upwork use the approved public assets and destinations. Keyboard, contrast, responsive, and reduced-motion requirements apply.
 
 ## Chosen direction and memorable moment
 
@@ -25,6 +25,6 @@ Approved composition: Evidence Docket. A full-width blueprint masthead opens int
 
 Composition grammar: square or near-square corners; fine blueprint rules and pencil leaders; no generic card shells; flat paper overlap rather than digital elevation; condensed industrial display type against highly legible body prose; warm-paper fields alternate with full-width navy blueprint ledgers. Paper and blueprint grain are image-native textures; grids, perforations, routes, stamps, and diagrams remain semantic or authored SVG/CSS. The mobile composition becomes one reading column, moves the outcome stamp after the opening statement, turns the punched edge index into a horizontal case strip, and stacks evidence-ledger rows without changing their Problem / Intervention / Outcome order.
 
-## Unresolved decisions
+## Resolved public destinations
 
-Final public links and resume/headshot assets remain placeholders.
+The resume, headshot, email, LinkedIn, GitHub, Fiverr, and Upwork destinations are supplied and active in the contact docket.

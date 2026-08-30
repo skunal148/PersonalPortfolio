@@ -12,8 +12,8 @@ export function ContactDocket({ destinations, profileImage }: ContactDocketProps
         <header className="contact-docket__header">
           <h2 id="contact-title">Choose the right path forward.</h2>
           <p>
-            The same evidence supports two conversations. Select the context that fits once a real
-            destination is supplied.
+            The same evidence supports two conversations. Use the destinations below to review the
+            resume, discuss a role, or scope an authorized project.
           </p>
         </header>
 
@@ -30,19 +30,30 @@ export function ContactDocket({ destinations, profileImage }: ContactDocketProps
 
         <div className="contact-docket__register">
           <div className="contact-docket__destinations" aria-label="Contact destinations">
-            {destinations.map((destination) =>
-              destination.status === "ready" ? (
-                <a
-                  className="destination destination--ready"
-                  href={destination.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  key={destination.label}
-                >
-                  <span>{destination.label}</span>
-                  <small>Open destination</small>
-                </a>
-              ) : (
+            {destinations.map((destination) => {
+              if (destination.status === "ready") {
+                const opensMailClient = destination.href.startsWith("mailto:");
+                const action = opensMailClient
+                  ? "Send an email"
+                  : destination.label === "Resume PDF"
+                    ? "View resume"
+                    : "View profile";
+
+                return (
+                  <a
+                    className="destination destination--ready"
+                    href={destination.href}
+                    target={opensMailClient ? undefined : "_blank"}
+                    rel={opensMailClient ? undefined : "noopener noreferrer"}
+                    key={destination.label}
+                  >
+                    <span>{destination.label}</span>
+                    <small>{action}</small>
+                  </a>
+                );
+              }
+
+              return (
                 <span
                   className="destination destination--placeholder"
                   aria-disabled="true"
@@ -51,8 +62,8 @@ export function ContactDocket({ destinations, profileImage }: ContactDocketProps
                   <span>{destination.label}</span>
                   <small>{destination.replacement}</small>
                 </span>
-              ),
-            )}
+              );
+            })}
           </div>
 
           {profileImage.status === "ready" ? (
@@ -73,7 +84,7 @@ export function ContactDocket({ destinations, profileImage }: ContactDocketProps
         </div>
 
         <footer className="contact-docket__footer">
-          <p>Claims source-backed. Developing directions labeled. Contact fields awaiting real destinations.</p>
+          <p>Claims source-backed. Developing directions labeled. Contact destinations are active.</p>
           <span>Evidence docket closed</span>
         </footer>
       </div>

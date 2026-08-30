@@ -27,15 +27,14 @@ Sitemap: https://YOUR-FINAL-HOSTNAME/sitemap.xml
 
 Do not add that sitemap line until the hostname is confirmed.
 
-## Replace before publishing
+## Publishing checklist
 
-- In `src/data/portfolio.ts`, replace all six `portfolio.destinations` placeholders: résumé PDF, email, LinkedIn, GitHub, Fiverr, and Upwork.
-- Put the supplied headshot in `public/assets`, then replace `portfolio.profileImage` in `src/data/portfolio.ts` with `{ status: "ready", src: "./assets/kunal-shinde.webp", alt: "Useful description", width: 720, height: 900 }`, using the image's real intrinsic dimensions. No component change is needed.
-- Supply the résumé PDF at the path used by the replacement destination.
+- Keep the approved résumé and portrait at `public/assets/kunal-shinde-resume.pdf` and `public/assets/kunal-shinde.webp`.
+- Keep the approved email, LinkedIn, GitHub, Fiverr, and Upwork destinations in `src/data/portfolio.ts` current.
 - Confirm the final public hostname before adding the sitemap line in `public/robots.txt`.
 - Confirm OSCP status before mentioning it publicly; use only `planned` or `in progress` unless completion is explicitly confirmed.
 - Review every case-study detail for confidentiality before publishing, keeping organizational implementation details redacted where necessary.
 
 ## Content truth
 
-Do not add a claim, metric, client, employer, certification, testimonial, or project detail without evidence Kunal has approved for public use. The page deliberately separates proven work from developing directions and keeps all public links as non-interactive placeholders until real destinations are supplied.
+Do not add a claim, metric, client, employer, certification, testimonial, or project detail without evidence Kunal has approved for public use. The page deliberately separates proven work from developing directions and exposes only approved public destinations.
