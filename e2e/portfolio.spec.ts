@@ -74,26 +74,32 @@ test("desktop opening exposes proof and both actions", async ({ page }) => {
   await expect(page.getByRole("link", { name: "Start a conversation" })).toBeVisible();
 });
 
-test("desktop career route stays clear of every stage label", async ({ page }) => {
+test("desktop career timeline is flat and stays clear of every stage label", async ({ page }) => {
   await page.setViewportSize({ width: 1459, height: 900 });
   await page.goto("/");
   await page.locator(".career-trace").scrollIntoViewIfNeeded();
 
-  const collisions = await page.evaluate(() => {
+  const timeline = await page.evaluate(() => {
     const path = document.querySelector<SVGPathElement>(".career-trace__route-line");
     const labels = Array.from(
       document.querySelectorAll<HTMLElement>(".career-trace__stage strong"),
     );
+    const nodes = Array.from(
+      document.querySelectorAll<SVGCircleElement>(".career-trace__route-nodes circle"),
+    );
     const matrix = path?.getScreenCTM();
     if (!path || !matrix) throw new Error("Expected the desktop career route");
 
-    return labels.flatMap((label, index) => {
-      const rect = label.getBoundingClientRect();
-      const routeLength = path.getTotalLength();
+    const routePoints = Array.from({ length: Math.ceil(path.getTotalLength()) + 1 }, (_, distance) => {
+      const point = path.getPointAtLength(distance);
+      return new DOMPoint(point.x, point.y).matrixTransform(matrix);
+    });
+    const yPositions = routePoints.map(({ y }) => y);
 
-      for (let distance = 0; distance <= routeLength; distance += 1) {
-        const point = path.getPointAtLength(distance);
-        const screenPoint = new DOMPoint(point.x, point.y).matrixTransform(matrix);
+    const collisions = labels.flatMap((label, index) => {
+      const rect = label.getBoundingClientRect();
+
+      for (const screenPoint of routePoints) {
         if (
           screenPoint.x >= rect.left - 2 &&
           screenPoint.x <= rect.right + 2 &&
@@ -106,9 +112,17 @@ test("desktop career route stays clear of every stage label", async ({ page }) =
 
       return [];
     });
+
+    return {
+      collisions,
+      nodeCount: nodes.length,
+      verticalSpread: Math.max(...yPositions) - Math.min(...yPositions),
+    };
   });
 
-  expect(collisions).toEqual([]);
+  expect(timeline.collisions).toEqual([]);
+  expect(timeline.nodeCount).toBe(5);
+  expect(timeline.verticalSpread).toBeLessThan(1);
 });
 
 test("mobile page has no horizontal document overflow", async ({ page }) => {

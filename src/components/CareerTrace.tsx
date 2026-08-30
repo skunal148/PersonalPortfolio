@@ -23,17 +23,17 @@ export function CareerTrace({ stages }: CareerTraceProps) {
         >
           <path
             className="career-trace__route-ghost"
-            d="M70 145H200V45H400V145H600V45H800V145H930"
+            d="M70 145H930"
           />
           <path
             className="career-trace__route-line"
-            d="M70 145H200V45H400V145H600V45H800V145H930"
+            d="M70 145H930"
           />
           <g className="career-trace__route-nodes">
             <circle cx="70" cy="145" r="8" />
-            <circle cx="260" cy="45" r="8" />
+            <circle cx="260" cy="145" r="8" />
             <circle cx="455" cy="145" r="8" />
-            <circle cx="650" cy="45" r="8" />
+            <circle cx="650" cy="145" r="8" />
             <circle className="career-trace__route-node--growth" cx="930" cy="145" r="11" />
           </g>
         </svg>
